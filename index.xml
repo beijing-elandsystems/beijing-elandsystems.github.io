@@ -6,20 +6,20 @@
     <description>Recent content on Beijing Elandsystems Tech News</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 09 Mar 2016 12:13:59 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 10 Mar 2016 00:13:59 +0800</lastBuildDate>
     <atom:link href="http://bj-elandsystems.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>150309</title>
-      <link>http://bj-elandsystems.github.io/post/150309/</link>
-      <pubDate>Wed, 09 Mar 2016 12:13:59 +0800</pubDate>
+      <title>150310</title>
+      <link>http://bj-elandsystems.github.io/post/150310/</link>
+      <pubDate>Thu, 10 Mar 2016 00:13:59 +0800</pubDate>
       
-      <guid>http://bj-elandsystems.github.io/post/150309/</guid>
+      <guid>http://bj-elandsystems.github.io/post/150310/</guid>
       <description>
 
-&lt;h2 id=&#34;本周-package:5610c0e3273d4106983817031026f6f3&#34;&gt;本周 package&lt;/h2&gt;
+&lt;h2 id=&#34;本周-package:fc9e1c937c4cd04790f433d6effbc270&#34;&gt;本周 package&lt;/h2&gt;
 
-&lt;h3 id=&#34;htmlagilitypack:5610c0e3273d4106983817031026f6f3&#34;&gt;HtmlAgilityPack&lt;/h3&gt;
+&lt;h3 id=&#34;htmlagilitypack:fc9e1c937c4cd04790f433d6effbc270&#34;&gt;HtmlAgilityPack&lt;/h3&gt;
 
 &lt;p&gt;有时候会需要从HTML 文档抽取信息。
 由于 HTML 也是 XML 形式的文档，所以可以简单地直接制作 Parser，或者使用 Regular Expression。
@@ -44,7 +44,7 @@ foreach(var url in imageUrls)
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;anglesharp:5610c0e3273d4106983817031026f6f3&#34;&gt;AngleSharp&lt;/h3&gt;
+&lt;h3 id=&#34;anglesharp:fc9e1c937c4cd04790f433d6effbc270&#34;&gt;AngleSharp&lt;/h3&gt;
 
 &lt;p&gt;AngleSharp library与使用 XPath 方式的 HtmlAgilityPack 不同，
 它支持CSS，它会经常更新，以便支持最新技术。&lt;/p&gt;
@@ -67,7 +67,7 @@ foreach(var url in imageUrls)
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;verbalexpressions:5610c0e3273d4106983817031026f6f3&#34;&gt;VerbalExpressions&lt;/h3&gt;
+&lt;h3 id=&#34;verbalexpressions:fc9e1c937c4cd04790f433d6effbc270&#34;&gt;VerbalExpressions&lt;/h3&gt;
 
 &lt;p&gt;读/写/调试 Regular Expression 是较难的，
 而 VerbalExpressions liarary 可以帮助 Regular Expression 写得更简易。&lt;/p&gt;
@@ -91,7 +91,7 @@ Assert.IsTrue(verbEx.Test(&amp;quot;https://www.microsoft.com&amp;quot;));
 &lt;p&gt;用 Regular Expression 语法也是可以的，
 只是通过 VerbalExpressions 可以写可读性更强的代码。&lt;/p&gt;
 
-&lt;h2 id=&#34;net-消息:5610c0e3273d4106983817031026f6f3&#34;&gt;.NET 消息&lt;/h2&gt;
+&lt;h2 id=&#34;net-消息:fc9e1c937c4cd04790f433d6effbc270&#34;&gt;.NET 消息&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://channel9.msdn.com/Series/Three-Essential-Tips-for-Async&#34;&gt;Six Essential Tips for Async&lt;/a&gt; : 这是 2年前的视频了，现在很难找到像 Lucian Wischik 一样详细的 Async 说明视频。&lt;/p&gt;&lt;/li&gt;
@@ -105,7 +105,7 @@ Assert.IsTrue(verbEx.Test(&amp;quot;https://www.microsoft.com&amp;quot;));
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.kunal-chowdhury.com/2016/01/csharp-basics.html&#34;&gt;Evolution of C#&lt;/a&gt; : Kunal Chowdhury 用一个表整理了从 C# 1.0~ 6.0 的变化。&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;asp-net-消息:5610c0e3273d4106983817031026f6f3&#34;&gt;ASP.NET 消息&lt;/h2&gt;
+&lt;h2 id=&#34;asp-net-消息:fc9e1c937c4cd04790f433d6effbc270&#34;&gt;ASP.NET 消息&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.dotnetcurry.com/aspnet/1223/secure-aspnet-web-api-using-tokens-owin-angularjs&#34;&gt;Secure ASP.NET Web API using token-based authentication and using it in an Angular application&lt;/a&gt; : Mahesh Sabnis说明了联动Angular.js和ASP.NET Web API时，该如何处理Token基础的认证。&lt;/p&gt;&lt;/li&gt;
@@ -117,7 +117,7 @@ Assert.IsTrue(verbEx.Test(&amp;quot;https://www.microsoft.com&amp;quot;));
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://blogs.taiga.nl/martijn/2015/12/10/develop-reactjs-asp-net-web-api-apps-in-visual-studio-2015/&#34;&gt;Develop ReactJS + ASP.NET Web API apps in Visual Studio 2015&lt;/a&gt; : Martijn Boland 介绍了用 Visual Studio 2015 开发 ReactJS 和 ASP.NET Web API Web Application的经验。&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;其他:5610c0e3273d4106983817031026f6f3&#34;&gt;其他&lt;/h2&gt;
+&lt;h2 id=&#34;其他:fc9e1c937c4cd04790f433d6effbc270&#34;&gt;其他&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.developerdrive.com/2015/12/what-you-need-to-know-about-bootstrap-4/&#34;&gt;What you need to know about Bootstrap 4&lt;/a&gt; : 使用 ASP.NET 进行开发时，离不开 Bootstrap。Ezequiel Bruni 说明了使用Bootstrap 前需要的知识点。&lt;/p&gt;&lt;/li&gt;

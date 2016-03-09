@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    150310 | Beijing Elandsystems Tech News
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="http://bj-elandsystems.github.io/post/150310/"/>
+
+  
+  <link rel="stylesheet" href="/css/sanitize.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/highlight_monokai.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  
+  <link href="http://bj-elandsystems.github.ioindex.xml" rel="alternate" type="application/rss+xml" title="Beijing Elandsystems Tech News" />
+  <link href="http://bj-elandsystems.github.ioindex.xml" rel="feed" type="application/rss+xml" title="Beijing Elandsystems Tech News" />
+
+  
+  
+
+
+</head>
+
+
+
+<body>
+<div class="container">
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="http://bj-elandsystems.github.io">Beijing Elandsystems Tech News</a></h1>
+        
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+  
+  <main id="single" role="main">
+    <div class="article-header">
+      <h1>150310</h1>
+      <div class="meta">
+        Mar 10, 2016 &nbsp;
+        
+      </div>
+    </div>
+    <article>
+      
+
+<h2 id="本周-package:fc9e1c937c4cd04790f433d6effbc270">本周 package</h2>
+
+<h3 id="htmlagilitypack:fc9e1c937c4cd04790f433d6effbc270">HtmlAgilityPack</h3>
+
+<p>有时候会需要从HTML 文档抽取信息。
+由于 HTML 也是 XML 形式的文档，所以可以简单地直接制作 Parser，或者使用 Regular Expression。
+但是比起这两种方式，通过专业的 HTML Parser 使用 DOM 来抽取会更好，
+而 HtmlAgilityPack library 就是为此提供的。</p>
+
+<ul>
+<li><a href="https://www.nuget.org/packages/HtmlAgilityPack/">HtmlAgilityPack</a></li>
+</ul>
+
+<pre><code>var httpClient = new HttpClient();
+var html = await httpClient.GetStringAsync(&quot;http://blogs.msdn.com/b/dotnet/&quot;);
+var dom = new HtmlDocument();
+dom.LoadHtml(html);
+var imageUrls = dom.DocumentNode
+   .SelectNodes(&quot;//img&quot;)
+   .Select(n =&gt; n.Attributes[&quot;src&quot;].Value)
+   .Distinct();
+foreach(var url in imageUrls)
+{
+   Console.WriteLine(url);
+}
+</code></pre>
+
+<h3 id="anglesharp:fc9e1c937c4cd04790f433d6effbc270">AngleSharp</h3>
+
+<p>AngleSharp library与使用 XPath 方式的 HtmlAgilityPack 不同，
+它支持CSS，它会经常更新，以便支持最新技术。</p>
+
+<ul>
+<li><a href="https://www.nuget.org/packages/AngleSharp/">AngleSharp</a></li>
+</ul>
+
+<p>通过 HtmlAgilityPack liarary 制作的功能，用 AngleSharp 实现的代码如下：</p>
+
+<pre><code>var config = Configuration.Default.WithDefaultLoader();
+var context = BrowsingContext.New(config); var dom = await context.OpenAsync(&quot;http://blogs.msdn.com/b/dotnet/&quot;);
+var imageUrls = dom
+   .QuerySelectorAll(&quot;img&quot;)
+   .Select(n =&gt; n.Attributes[&quot;src&quot;].Value)
+   .Distinct();
+foreach(var url in imageUrls)
+{
+   Console.WriteLine(url);
+}
+</code></pre>
+
+<h3 id="verbalexpressions:fc9e1c937c4cd04790f433d6effbc270">VerbalExpressions</h3>
+
+<p>读/写/调试 Regular Expression 是较难的，
+而 VerbalExpressions liarary 可以帮助 Regular Expression 写得更简易。</p>
+
+<ul>
+<li><a href="https://github.com/VerbalExpressions/CSharpVerbalExpressions">VerbalExpressions</a></li>
+</ul>
+
+<pre><code>var verbEx = new VerbalExpressions()
+   .StartOfLine()
+   .Then(&quot;http&quot;)
+   .Maybe(&quot;s&quot;)
+   .Then(&quot;://&quot;)
+   .Maybe(&quot;www.&quot;)
+   .AnythingBut(&quot; &quot;)
+   .EndOfLine();
+
+Assert.IsTrue(verbEx.Test(&quot;https://www.microsoft.com&quot;));
+</code></pre>
+
+<p>用 Regular Expression 语法也是可以的，
+只是通过 VerbalExpressions 可以写可读性更强的代码。</p>
+
+<h2 id="net-消息:fc9e1c937c4cd04790f433d6effbc270">.NET 消息</h2>
+
+<ul>
+<li><p><a href="https://channel9.msdn.com/Series/Three-Essential-Tips-for-Async">Six Essential Tips for Async</a> : 这是 2年前的视频了，现在很难找到像 Lucian Wischik 一样详细的 Async 说明视频。</p></li>
+
+<li><p><a href="http://haacked.com/archive/2015/12/16/to-string-or-not/">To String or to string</a> : C# 开发者可能每个人都曾想过，<code>System.String</code> 和 <code>string</code> 中该使用哪个？当 Phil Haack 提出这个疑问时，有许多人回复。</p></li>
+
+<li><p><a href="http://www.hanselman.com/blog/ExploringTheNewNETDotnetCommandLineInterfaceCLI.aspx">Exploring the new .NET &ldquo;dotnet&rdquo; Command Line Interface (CLI)</a> : Scott Hanselman与 <a href="https://dotnet.github.io/">.NET Core</a>一起简单介绍了新出现的命令行工具(dotnet)的基本使用方法。</p></li>
+
+<li><p><a href="http://spazzarama.com/2015/12/31/fast-shared-array-buffer-and-circular-buffer-ring-buffer-for-dotnet-ipc-with-memory-mapped-files/">Fast shared Array, Buffer and Circular Buffer / Ring Buffer for .NET IPC with Memory Mapped Files</a> : Justin Stenning介绍了SharedMemory library，它可以让 .NET 中的许多 Process 之间像 Array, Buffer, Circular Buffer 一样的资料结构相互进行共享。内部使用的 IPC(Inter-process communication) 技术为 memory-map。</p></li>
+
+<li><p><a href="http://www.kunal-chowdhury.com/2016/01/csharp-basics.html">Evolution of C#</a> : Kunal Chowdhury 用一个表整理了从 C# 1.0~ 6.0 的变化。</p></li>
+</ul>
+
+<h2 id="asp-net-消息:fc9e1c937c4cd04790f433d6effbc270">ASP.NET 消息</h2>
+
+<ul>
+<li><p><a href="http://www.dotnetcurry.com/aspnet/1223/secure-aspnet-web-api-using-tokens-owin-angularjs">Secure ASP.NET Web API using token-based authentication and using it in an Angular application</a> : Mahesh Sabnis说明了联动Angular.js和ASP.NET Web API时，该如何处理Token基础的认证。</p></li>
+
+<li><p><a href="http://blogs.msdn.com/b/abhinaba/archive/2015/12/22/publishing-a-asp-net-5-web-application-to-iis-locally.aspx">Publishing a ASP.NET 5 Web-Application to IIS Locally</a> : Abhinaba Basu说明了怎么将ASP.NET 5 Web Application发布到本地IIS服务器中</p></li>
+
+<li><p><a href="https://www.simple-talk.com/dotnet/asp.net/how-to-take-an-asp.net-mvc-web-site-down-for-maintenance/">How to take an ASP.NET MVC web site down for maintenance</a> : Jon smith 共享了，为进行维护需要暂停 ASP.NET MVC 网站时的一些疑问以及自己的处理秘诀。</p></li>
+
+<li><p><a href="http://blogs.taiga.nl/martijn/2015/12/10/develop-reactjs-asp-net-web-api-apps-in-visual-studio-2015/">Develop ReactJS + ASP.NET Web API apps in Visual Studio 2015</a> : Martijn Boland 介绍了用 Visual Studio 2015 开发 ReactJS 和 ASP.NET Web API Web Application的经验。</p></li>
+</ul>
+
+<h2 id="其他:fc9e1c937c4cd04790f433d6effbc270">其他</h2>
+
+<ul>
+<li><p><a href="http://www.developerdrive.com/2015/12/what-you-need-to-know-about-bootstrap-4/">What you need to know about Bootstrap 4</a> : 使用 ASP.NET 进行开发时，离不开 Bootstrap。Ezequiel Bruni 说明了使用Bootstrap 前需要的知识点。</p></li>
+
+<li><p><a href="http://mojs.io/">mo.js</a>: Mary Lou在 <a href="http://tympanus.net/codrops/2016/02/23/icon-animations-powered-by-mo-js/">Icon Animations Powered by mo.js</a> 中介绍了 JavaScript Animation Library：<a href="http://mojs.io/">mo.js</a></p></li>
+</ul>
+
+      
+      
+      
+    </article>
+    
+ <aside><div id="disqus_thread"></div></aside> 
+
+<script type="text/javascript">
+     
+    var disqus_shortname = 'tanksuzuki';
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  </main>
+  
+  <nav class="pagination-single">
+    
+    
+  </nav>
+
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      <img src="/images/profile.png" width="64" height="64"><br>
+      Beijing ELANDSYSTEMS Technology Development CO., LTD
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>
+

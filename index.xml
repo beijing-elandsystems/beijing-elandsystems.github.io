@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Beijing Elandsystems Tech News</title>
+    <link>http://bj-elandsystems.github.io/</link>
+    <description>Recent content on Beijing Elandsystems Tech News</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 09 Mar 2016 12:13:59 +0800</lastBuildDate>
+    <atom:link href="http://bj-elandsystems.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>150309</title>
+      <link>http://bj-elandsystems.github.io/post/150309/</link>
+      <pubDate>Wed, 09 Mar 2016 12:13:59 +0800</pubDate>
+      
+      <guid>http://bj-elandsystems.github.io/post/150309/</guid>
+      <description>
+
+&lt;h2 id=&#34;本周-package:5610c0e3273d4106983817031026f6f3&#34;&gt;本周 package&lt;/h2&gt;
+
+&lt;h3 id=&#34;htmlagilitypack:5610c0e3273d4106983817031026f6f3&#34;&gt;HtmlAgilityPack&lt;/h3&gt;
+
+&lt;p&gt;有时候会需要从HTML 文档抽取信息。
+由于 HTML 也是 XML 形式的文档，所以可以简单地直接制作 Parser，或者使用 Regular Expression。
+但是比起这两种方式，通过专业的 HTML Parser 使用 DOM 来抽取会更好，
+而 HtmlAgilityPack library 就是为此提供的。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.nuget.org/packages/HtmlAgilityPack/&#34;&gt;HtmlAgilityPack&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;var httpClient = new HttpClient();
+var html = await httpClient.GetStringAsync(&amp;quot;http://blogs.msdn.com/b/dotnet/&amp;quot;);
+var dom = new HtmlDocument();
+dom.LoadHtml(html);
+var imageUrls = dom.DocumentNode
+   .SelectNodes(&amp;quot;//img&amp;quot;)
+   .Select(n =&amp;gt; n.Attributes[&amp;quot;src&amp;quot;].Value)
+   .Distinct();
+foreach(var url in imageUrls)
+{
+   Console.WriteLine(url);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;anglesharp:5610c0e3273d4106983817031026f6f3&#34;&gt;AngleSharp&lt;/h3&gt;
+
+&lt;p&gt;AngleSharp library与使用 XPath 方式的 HtmlAgilityPack 不同，
+它支持CSS，它会经常更新，以便支持最新技术。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.nuget.org/packages/AngleSharp/&#34;&gt;AngleSharp&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;通过 HtmlAgilityPack liarary 制作的功能，用 AngleSharp 实现的代码如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var config = Configuration.Default.WithDefaultLoader();
+var context = BrowsingContext.New(config); var dom = await context.OpenAsync(&amp;quot;http://blogs.msdn.com/b/dotnet/&amp;quot;);
+var imageUrls = dom
+   .QuerySelectorAll(&amp;quot;img&amp;quot;)
+   .Select(n =&amp;gt; n.Attributes[&amp;quot;src&amp;quot;].Value)
+   .Distinct();
+foreach(var url in imageUrls)
+{
+   Console.WriteLine(url);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;verbalexpressions:5610c0e3273d4106983817031026f6f3&#34;&gt;VerbalExpressions&lt;/h3&gt;
+
+&lt;p&gt;读/写/调试 Regular Expression 是较难的，
+而 VerbalExpressions liarary 可以帮助 Regular Expression 写得更简易。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/VerbalExpressions/CSharpVerbalExpressions&#34;&gt;VerbalExpressions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;var verbEx = new VerbalExpressions()
+   .StartOfLine()
+   .Then(&amp;quot;http&amp;quot;)
+   .Maybe(&amp;quot;s&amp;quot;)
+   .Then(&amp;quot;://&amp;quot;)
+   .Maybe(&amp;quot;www.&amp;quot;)
+   .AnythingBut(&amp;quot; &amp;quot;)
+   .EndOfLine();
+
+Assert.IsTrue(verbEx.Test(&amp;quot;https://www.microsoft.com&amp;quot;));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;用 Regular Expression 语法也是可以的，
+只是通过 VerbalExpressions 可以写可读性更强的代码。&lt;/p&gt;
+
+&lt;h2 id=&#34;net-消息:5610c0e3273d4106983817031026f6f3&#34;&gt;.NET 消息&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://channel9.msdn.com/Series/Three-Essential-Tips-for-Async&#34;&gt;Six Essential Tips for Async&lt;/a&gt; : 这是 2年前的视频了，现在很难找到像 Lucian Wischik 一样详细的 Async 说明视频。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://haacked.com/archive/2015/12/16/to-string-or-not/&#34;&gt;To String or to string&lt;/a&gt; : C# 开发者可能每个人都曾想过，&lt;code&gt;System.String&lt;/code&gt; 和 &lt;code&gt;string&lt;/code&gt; 中该使用哪个？当 Phil Haack 提出这个疑问时，有许多人回复。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.hanselman.com/blog/ExploringTheNewNETDotnetCommandLineInterfaceCLI.aspx&#34;&gt;Exploring the new .NET &amp;ldquo;dotnet&amp;rdquo; Command Line Interface (CLI)&lt;/a&gt; : Scott Hanselman与 &lt;a href=&#34;https://dotnet.github.io/&#34;&gt;.NET Core&lt;/a&gt;一起简单介绍了新出现的命令行工具(dotnet)的基本使用方法。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://spazzarama.com/2015/12/31/fast-shared-array-buffer-and-circular-buffer-ring-buffer-for-dotnet-ipc-with-memory-mapped-files/&#34;&gt;Fast shared Array, Buffer and Circular Buffer / Ring Buffer for .NET IPC with Memory Mapped Files&lt;/a&gt; : Justin Stenning介绍了SharedMemory library，它可以让 .NET 中的许多 Process 之间像 Array, Buffer, Circular Buffer 一样的资料结构相互进行共享。内部使用的 IPC(Inter-process communication) 技术为 memory-map。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.kunal-chowdhury.com/2016/01/csharp-basics.html&#34;&gt;Evolution of C#&lt;/a&gt; : Kunal Chowdhury 用一个表整理了从 C# 1.0~ 6.0 的变化。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;asp-net-消息:5610c0e3273d4106983817031026f6f3&#34;&gt;ASP.NET 消息&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.dotnetcurry.com/aspnet/1223/secure-aspnet-web-api-using-tokens-owin-angularjs&#34;&gt;Secure ASP.NET Web API using token-based authentication and using it in an Angular application&lt;/a&gt; : Mahesh Sabnis说明了联动Angular.js和ASP.NET Web API时，该如何处理Token基础的认证。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://blogs.msdn.com/b/abhinaba/archive/2015/12/22/publishing-a-asp-net-5-web-application-to-iis-locally.aspx&#34;&gt;Publishing a ASP.NET 5 Web-Application to IIS Locally&lt;/a&gt; : Abhinaba Basu说明了怎么将ASP.NET 5 Web Application发布到本地IIS服务器中&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.simple-talk.com/dotnet/asp.net/how-to-take-an-asp.net-mvc-web-site-down-for-maintenance/&#34;&gt;How to take an ASP.NET MVC web site down for maintenance&lt;/a&gt; : Jon smith 共享了，为进行维护需要暂停 ASP.NET MVC 网站时的一些疑问以及自己的处理秘诀。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://blogs.taiga.nl/martijn/2015/12/10/develop-reactjs-asp-net-web-api-apps-in-visual-studio-2015/&#34;&gt;Develop ReactJS + ASP.NET Web API apps in Visual Studio 2015&lt;/a&gt; : Martijn Boland 介绍了用 Visual Studio 2015 开发 ReactJS 和 ASP.NET Web API Web Application的经验。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;其他:5610c0e3273d4106983817031026f6f3&#34;&gt;其他&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.developerdrive.com/2015/12/what-you-need-to-know-about-bootstrap-4/&#34;&gt;What you need to know about Bootstrap 4&lt;/a&gt; : 使用 ASP.NET 进行开发时，离不开 Bootstrap。Ezequiel Bruni 说明了使用Bootstrap 前需要的知识点。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://mojs.io/&#34;&gt;mo.js&lt;/a&gt;: Mary Lou在 &lt;a href=&#34;http://tympanus.net/codrops/2016/02/23/icon-animations-powered-by-mo-js/&#34;&gt;Icon Animations Powered by mo.js&lt;/a&gt; 中介绍了 JavaScript Animation Library：&lt;a href=&#34;http://mojs.io/&#34;&gt;mo.js&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

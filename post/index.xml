@@ -6,8 +6,102 @@
     <description>Recent content in Posts on Beijing Elandsystems Tech News</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 10 Mar 2016 00:13:59 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 15 Mar 2016 21:49:02 +0800</lastBuildDate>
     <atom:link href="http://beijing-elandsystems.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>150317</title>
+      <link>http://beijing-elandsystems.github.io/post/150317/</link>
+      <pubDate>Tue, 15 Mar 2016 21:49:02 +0800</pubDate>
+      
+      <guid>http://beijing-elandsystems.github.io/post/150317/</guid>
+      <description>
+
+&lt;h2 id=&#34;本周-package:cbebda548ae1db85ab246595f2267af6&#34;&gt;本周 package&lt;/h2&gt;
+
+&lt;h3 id=&#34;restsharp:cbebda548ae1db85ab246595f2267af6&#34;&gt;RestSharp&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/restsharp/RestSharp&#34;&gt;RestSharp&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;使用 REST API时，不像对象 Serialization 或用户认证一样单单用标准 HTTP 技术就能解决所有问题，
+而 RestSharp 便是为此提供的，是一种实现使用 REST API 时所需的功能的 .NET library。&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;client&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;RestClient(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;http://example.com&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt;// client.Authenticator = new HttpBasicAuthenticator(username, password);&lt;/span&gt;
+
+&lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;request&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;RestRequest(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;resource/{id}&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;Method.POST);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;request.AddParameter(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt; &lt;span style=&#34;color: #75715e&#34;&gt;// adds to POST or URL querystring based on Method&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;request.AddUrlSegment(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;id&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;123&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt; &lt;span style=&#34;color: #75715e&#34;&gt;// replaces matching token in request.Resource&lt;/span&gt;
+
+&lt;span style=&#34;color: #75715e&#34;&gt;// easily add HTTP Headers&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;request.AddHeader(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;header&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+
+&lt;span style=&#34;color: #75715e&#34;&gt;// add files to upload (works with compatible verbs)&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;request.AddFile(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;file&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;path);&lt;/span&gt;
+
+&lt;span style=&#34;color: #75715e&#34;&gt;// execute the request&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;IRestResponse&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;response&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;client.Execute(request);&lt;/span&gt;
+&lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;content&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;response.Content;&lt;/span&gt; &lt;span style=&#34;color: #75715e&#34;&gt;// raw content as string&lt;/span&gt;
+
+&lt;span style=&#34;color: #75715e&#34;&gt;// async with deserialization&lt;/span&gt;
+&lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;asyncHandle&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;client.ExecuteAsync&amp;lt;Person&amp;gt;(request,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;response&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;Console.WriteLine(response.Data.Name);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id=&#34;automapper:cbebda548ae1db85ab246595f2267af6&#34;&gt;AutoMapper&lt;/h3&gt;
+
+&lt;p&gt;AutoMapper 是方便匹配对象之间的数据的 library。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/AutoMapper/AutoMapper&#34;&gt;AutoMapper&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;一般情况下 UI 领域中使用的数据对象和 Domain 领域中使用的数据对象不相同。
+虽然制作服务逻辑时是用 Domain 对象，但是多数情况最终往页面传送时是以DTO(&lt;em&gt;Data Transfer Object&lt;/em&gt;) 方式传送。
+若使用 AutoMapper ，则在互不相同的 Layer 之间也能轻松传送数据对象间的值。&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;config&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;MapperConfiguration(cfg&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;cfg.CreateMap&amp;lt;Order,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;OrderDto&amp;gt;());&lt;/span&gt;
+&lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;mapper&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;config.CreateMapper();&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;OrderDto&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;dto&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;mapper.Map&amp;lt;OrderDto&amp;gt;(order);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;net-消息:cbebda548ae1db85ab246595f2267af6&#34;&gt;.NET 消息&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://developer.telerik.com/featured/the-era-of-portable-net/&#34;&gt;The Era of Portable .NET&lt;/a&gt; : 随着 .NET支持multi-platform 环境，PCL(Portable Class Library) 项目类型有了新的可能性。Sam Basu 对此做了详细说明。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/&#34;&gt;StackOverflow, the architecture 2016 edition&lt;/a&gt; : Nick Craver 共享了 &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; 网站的最新架构。
+StackOverflow 作为开发者之间提问及共享解决方案的网页，有很多人在使用。那么我们一起看一下每天平均处理2亿Request，并且接收3TB信息的StackOverflow的架构吧。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://petabridge.com/blog/introduction-to-nbench/&#34;&gt;Introducing NBench – an Automated Performance Testing Framework for .NET Applications&lt;/a&gt; : Petabridge中说明了自动化性能测试框架&amp;ndash;NBench。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;asp-net-消息:cbebda548ae1db85ab246595f2267af6&#34;&gt;ASP.NET 消息&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;David Paquette, James Chambers, Simon Timms 在 Channel 9 的 ASP.NET Monsters Channel 中，连载了&lt;a href=&#34;https://channel9.msdn.com/Series/aspnetmonsters?sort=recent#tab_sortBy_recent&#34;&gt;利用 ASP.NET Core 开发应用程序的方法系列&lt;/a&gt;。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://codeclimber.net.nz/archive/2016/03/04/Introduction-to-ASP-NET-Core-1-0-video.aspx&#34;&gt;Introduction to ASP.NET Core (video)&lt;/a&gt; : Simone Chiarett 说明了 ASP.NET Core 的安装方法和用ASP.NET Core v1.0 制作简单网站的方法。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.ageofascent.com/asp-net-core-exeeds-1-15-million-requests-12-6-gbps/&#34;&gt;ASP.NET Core – 2300% More Requests Served Per Second&lt;/a&gt; : Ben Adams 共享了比 ASP.NET 性能更高的 ASP.NET Core 的性能测定结果和其意义。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.hanselman.com/blog/BestPracticesForPrivateConfigDataAndConnectionStringsInConfigurationInASPNETAndAzure.aspx&#34;&gt;Best practices for private config data and connection strings in configuration in ASP.NET and Azure&lt;/a&gt; : Scott Hanselman 介绍了在 Azure 上的 ASP.NET web 应用程序中保管像 connection string一样敏感的内部数据的最佳方法。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://lockmedown.com/preventing-sensitive-data-exposure-aspnet-part1/&#34;&gt;Preventing sensitive data exposure in ASP.NET Part 1, Part 2&lt;/a&gt; : Max R McCarty 通过 &lt;a href=&#34;http://lockmedown.com/preventing-sensitive-data-exposure-aspnet-part1/&#34;&gt;Part 1&lt;/a&gt; 和 &lt;a href=&#34;http://lockmedown.com/preventing-sensitive-data-exposure-aspnet-part2/&#34;&gt;Part 2&lt;/a&gt; 共享了如何简单地管理及保护 ASP.NET 应用中不能外泄的敏感用户数据的方法。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;其他:cbebda548ae1db85ab246595f2267af6&#34;&gt;其他&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.csharpstar.com/top-20-google-amazon-programming-interview-questions/&#34;&gt;Top 20 Google &amp;amp; Amazon Programming Interview Questions&lt;/a&gt;: 谷歌、亚马逊等世界级 IT 企业面试 C# 开发者时，最常问的技术性问题。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>150310</title>
@@ -30,19 +124,20 @@
 &lt;li&gt;&lt;a href=&#34;https://www.nuget.org/packages/HtmlAgilityPack/&#34;&gt;HtmlAgilityPack&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;var httpClient = new HttpClient();
-var html = await httpClient.GetStringAsync(&amp;quot;http://blogs.msdn.com/b/dotnet/&amp;quot;);
-var dom = new HtmlDocument();
-dom.LoadHtml(html);
-var imageUrls = dom.DocumentNode
-   .SelectNodes(&amp;quot;//img&amp;quot;)
-   .Select(n =&amp;gt; n.Attributes[&amp;quot;src&amp;quot;].Value)
-   .Distinct();
-foreach(var url in imageUrls)
-{
-   Console.WriteLine(url);
-}
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;httpClient&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;HttpClient();&lt;/span&gt;
+&lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;html&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;await&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;httpClient.GetStringAsync(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;http://blogs.msdn.com/b/dotnet/&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;dom&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;HtmlDocument();&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;dom.LoadHtml(html);&lt;/span&gt;
+&lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;imageUrls&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;dom.DocumentNode&lt;/span&gt;
+   &lt;span style=&#34;color: #f8f8f2&#34;&gt;.SelectNodes(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;//img&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+   &lt;span style=&#34;color: #f8f8f2&#34;&gt;.Select(n&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;n.Attributes[&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;src&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;].Value)&lt;/span&gt;
+   &lt;span style=&#34;color: #f8f8f2&#34;&gt;.Distinct();&lt;/span&gt;
+&lt;span style=&#34;color: #66d9ef&#34;&gt;foreach&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;url&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;imageUrls)&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;{&lt;/span&gt;
+   &lt;span style=&#34;color: #f8f8f2&#34;&gt;Console.WriteLine(url);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
 
 &lt;h3 id=&#34;anglesharp:fc9e1c937c4cd04790f433d6effbc270&#34;&gt;AngleSharp&lt;/h3&gt;
 
@@ -55,17 +150,18 @@ foreach(var url in imageUrls)
 
 &lt;p&gt;通过 HtmlAgilityPack liarary 制作的功能，用 AngleSharp 实现的代码如下：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;var config = Configuration.Default.WithDefaultLoader();
-var context = BrowsingContext.New(config); var dom = await context.OpenAsync(&amp;quot;http://blogs.msdn.com/b/dotnet/&amp;quot;);
-var imageUrls = dom
-   .QuerySelectorAll(&amp;quot;img&amp;quot;)
-   .Select(n =&amp;gt; n.Attributes[&amp;quot;src&amp;quot;].Value)
-   .Distinct();
-foreach(var url in imageUrls)
-{
-   Console.WriteLine(url);
-}
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;config&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;Configuration.Default.WithDefaultLoader();&lt;/span&gt;
+&lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;context&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;BrowsingContext.New(config);&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;dom&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;await&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;context.OpenAsync(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;http://blogs.msdn.com/b/dotnet/&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;imageUrls&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;dom&lt;/span&gt;
+   &lt;span style=&#34;color: #f8f8f2&#34;&gt;.QuerySelectorAll(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;img&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+   &lt;span style=&#34;color: #f8f8f2&#34;&gt;.Select(n&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;n.Attributes[&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;src&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;].Value)&lt;/span&gt;
+   &lt;span style=&#34;color: #f8f8f2&#34;&gt;.Distinct();&lt;/span&gt;
+&lt;span style=&#34;color: #66d9ef&#34;&gt;foreach&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;url&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;imageUrls)&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;{&lt;/span&gt;
+   &lt;span style=&#34;color: #f8f8f2&#34;&gt;Console.WriteLine(url);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
 
 &lt;h3 id=&#34;verbalexpressions:fc9e1c937c4cd04790f433d6effbc270&#34;&gt;VerbalExpressions&lt;/h3&gt;
 
@@ -76,17 +172,18 @@ foreach(var url in imageUrls)
 &lt;li&gt;&lt;a href=&#34;https://github.com/VerbalExpressions/CSharpVerbalExpressions&#34;&gt;VerbalExpressions&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;var verbEx = new VerbalExpressions()
-   .StartOfLine()
-   .Then(&amp;quot;http&amp;quot;)
-   .Maybe(&amp;quot;s&amp;quot;)
-   .Then(&amp;quot;://&amp;quot;)
-   .Maybe(&amp;quot;www.&amp;quot;)
-   .AnythingBut(&amp;quot; &amp;quot;)
-   .EndOfLine();
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;verbEx&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;VerbalExpressions()&lt;/span&gt;
+   &lt;span style=&#34;color: #f8f8f2&#34;&gt;.StartOfLine()&lt;/span&gt;
+   &lt;span style=&#34;color: #f8f8f2&#34;&gt;.Then(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;http&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+   &lt;span style=&#34;color: #f8f8f2&#34;&gt;.Maybe(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;s&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+   &lt;span style=&#34;color: #f8f8f2&#34;&gt;.Then(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;://&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+   &lt;span style=&#34;color: #f8f8f2&#34;&gt;.Maybe(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;www.&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+   &lt;span style=&#34;color: #f8f8f2&#34;&gt;.AnythingBut(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+   &lt;span style=&#34;color: #f8f8f2&#34;&gt;.EndOfLine();&lt;/span&gt;
 
-Assert.IsTrue(verbEx.Test(&amp;quot;https://www.microsoft.com&amp;quot;));
-&lt;/code&gt;&lt;/pre&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;Assert.IsTrue(verbEx.Test(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;https://www.microsoft.com&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;));&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
 
 &lt;p&gt;用 Regular Expression 语法也是可以的，
 只是通过 VerbalExpressions 可以写可读性更强的代码。&lt;/p&gt;

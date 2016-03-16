@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<meta name="generator" content="Hugo 0.15" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://beijing-elandsystems.github.io/css/style.css" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" type="text/css">
+<link rel="alternate" href="http://beijing-elandsystems.github.io/index.xml" type="application/rss+xml" title="Beijing Elandsystems Tech News">
+<title>150317 - Beijing Elandsystems Tech News</title>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <a class="path" href="http://beijing-elandsystems.github.io">[Beijing Elandsystems Tech News]</a>
+    <span class="caret"># _</span>
+  </div>
+</header>
+
+<div class="container">
+
+
+<main role="main" class="article">
+  
+<article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="meta">
+
+    <span class="key">published on</span>
+    <span class="val"><time itemprop="datePublished" datetime="2016-03-15">March 15, 2016</time></span>
+
+
+
+  </div>
+  <h1 class="headline" itemprop="headline">150317</h1>
+  <section class="body" itemprop="articleBody">
+    
+
+<h2 id="本周-package:cbebda548ae1db85ab246595f2267af6">本周 package</h2>
+
+<h3 id="restsharp:cbebda548ae1db85ab246595f2267af6">RestSharp</h3>
+
+<ul>
+<li><a href="https://github.com/restsharp/RestSharp">RestSharp</a></li>
+</ul>
+
+<p>使用 REST API时，不像对象 Serialization 或用户认证一样单单用标准 HTTP 技术就能解决所有问题，
+而 RestSharp 便是为此提供的，是一种实现使用 REST API 时所需的功能的 .NET library。</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">var</span> <span style="color: #f8f8f2">client</span> <span style="color: #f8f8f2">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">RestClient(</span><span style="color: #e6db74">&quot;http://example.com&quot;</span><span style="color: #f8f8f2">);</span>
+<span style="color: #75715e">// client.Authenticator = new HttpBasicAuthenticator(username, password);</span>
+
+<span style="color: #66d9ef">var</span> <span style="color: #f8f8f2">request</span> <span style="color: #f8f8f2">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">RestRequest(</span><span style="color: #e6db74">&quot;resource/{id}&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">Method.POST);</span>
+<span style="color: #f8f8f2">request.AddParameter(</span><span style="color: #e6db74">&quot;name&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;value&quot;</span><span style="color: #f8f8f2">);</span> <span style="color: #75715e">// adds to POST or URL querystring based on Method</span>
+<span style="color: #f8f8f2">request.AddUrlSegment(</span><span style="color: #e6db74">&quot;id&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;123&quot;</span><span style="color: #f8f8f2">);</span> <span style="color: #75715e">// replaces matching token in request.Resource</span>
+
+<span style="color: #75715e">// easily add HTTP Headers</span>
+<span style="color: #f8f8f2">request.AddHeader(</span><span style="color: #e6db74">&quot;header&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;value&quot;</span><span style="color: #f8f8f2">);</span>
+
+<span style="color: #75715e">// add files to upload (works with compatible verbs)</span>
+<span style="color: #f8f8f2">request.AddFile(</span><span style="color: #e6db74">&quot;file&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">path);</span>
+
+<span style="color: #75715e">// execute the request</span>
+<span style="color: #f8f8f2">IRestResponse</span> <span style="color: #f8f8f2">response</span> <span style="color: #f8f8f2">=</span> <span style="color: #f8f8f2">client.Execute(request);</span>
+<span style="color: #66d9ef">var</span> <span style="color: #f8f8f2">content</span> <span style="color: #f8f8f2">=</span> <span style="color: #f8f8f2">response.Content;</span> <span style="color: #75715e">// raw content as string</span>
+
+<span style="color: #75715e">// async with deserialization</span>
+<span style="color: #66d9ef">var</span> <span style="color: #f8f8f2">asyncHandle</span> <span style="color: #f8f8f2">=</span> <span style="color: #f8f8f2">client.ExecuteAsync&lt;Person&gt;(request,</span> <span style="color: #f8f8f2">response</span> <span style="color: #f8f8f2">=&gt;</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #f8f8f2">Console.WriteLine(response.Data.Name);</span>
+<span style="color: #f8f8f2">});</span>
+</pre></div>
+
+
+<h3 id="automapper:cbebda548ae1db85ab246595f2267af6">AutoMapper</h3>
+
+<p>AutoMapper 是方便匹配对象之间的数据的 library。</p>
+
+<ul>
+<li><a href="https://github.com/AutoMapper/AutoMapper">AutoMapper</a></li>
+</ul>
+
+<p>一般情况下 UI 领域中使用的数据对象和 Domain 领域中使用的数据对象不相同。
+虽然制作服务逻辑时是用 Domain 对象，但是多数情况最终往页面传送时是以DTO(<em>Data Transfer Object</em>) 方式传送。
+若使用 AutoMapper ，则在互不相同的 Layer 之间也能轻松传送数据对象间的值。</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">var</span> <span style="color: #f8f8f2">config</span> <span style="color: #f8f8f2">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">MapperConfiguration(cfg</span> <span style="color: #f8f8f2">=&gt;</span> <span style="color: #f8f8f2">cfg.CreateMap&lt;Order,</span> <span style="color: #f8f8f2">OrderDto&gt;());</span>
+<span style="color: #66d9ef">var</span> <span style="color: #f8f8f2">mapper</span> <span style="color: #f8f8f2">=</span> <span style="color: #f8f8f2">config.CreateMapper();</span>
+<span style="color: #f8f8f2">OrderDto</span> <span style="color: #f8f8f2">dto</span> <span style="color: #f8f8f2">=</span> <span style="color: #f8f8f2">mapper.Map&lt;OrderDto&gt;(order);</span>
+</pre></div>
+
+
+<h2 id="net-消息:cbebda548ae1db85ab246595f2267af6">.NET 消息</h2>
+
+<ul>
+<li><p><a href="http://developer.telerik.com/featured/the-era-of-portable-net/">The Era of Portable .NET</a> : 随着 .NET支持multi-platform 环境，PCL(Portable Class Library) 项目类型有了新的可能性。Sam Basu 对此做了详细说明。</p></li>
+
+<li><p><a href="http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/">StackOverflow, the architecture 2016 edition</a> : Nick Craver 共享了 <a href="http://stackoverflow.com/">Stack Overflow</a> 网站的最新架构。
+StackOverflow 作为开发者之间提问及共享解决方案的网页，有很多人在使用。那么我们一起看一下每天平均处理2亿Request，并且接收3TB信息的StackOverflow的架构吧。</p></li>
+
+<li><p><a href="https://petabridge.com/blog/introduction-to-nbench/">Introducing NBench – an Automated Performance Testing Framework for .NET Applications</a> : Petabridge中说明了自动化性能测试框架&ndash;NBench。</p></li>
+</ul>
+
+<h2 id="asp-net-消息:cbebda548ae1db85ab246595f2267af6">ASP.NET 消息</h2>
+
+<ul>
+<li><p>David Paquette, James Chambers, Simon Timms 在 Channel 9 的 ASP.NET Monsters Channel 中，连载了<a href="https://channel9.msdn.com/Series/aspnetmonsters?sort=recent#tab_sortBy_recent">利用 ASP.NET Core 开发应用程序的方法系列</a>。</p></li>
+
+<li><p><a href="http://codeclimber.net.nz/archive/2016/03/04/Introduction-to-ASP-NET-Core-1-0-video.aspx">Introduction to ASP.NET Core (video)</a> : Simone Chiarett 说明了 ASP.NET Core 的安装方法和用ASP.NET Core v1.0 制作简单网站的方法。</p></li>
+
+<li><p><a href="http://www.ageofascent.com/asp-net-core-exeeds-1-15-million-requests-12-6-gbps/">ASP.NET Core – 2300% More Requests Served Per Second</a> : Ben Adams 共享了比 ASP.NET 性能更高的 ASP.NET Core 的性能测定结果和其意义。</p></li>
+
+<li><p><a href="http://www.hanselman.com/blog/BestPracticesForPrivateConfigDataAndConnectionStringsInConfigurationInASPNETAndAzure.aspx">Best practices for private config data and connection strings in configuration in ASP.NET and Azure</a> : Scott Hanselman 介绍了在 Azure 上的 ASP.NET web 应用程序中保管像 connection string一样敏感的内部数据的最佳方法。</p></li>
+
+<li><p><a href="http://lockmedown.com/preventing-sensitive-data-exposure-aspnet-part1/">Preventing sensitive data exposure in ASP.NET Part 1, Part 2</a> : Max R McCarty 通过 <a href="http://lockmedown.com/preventing-sensitive-data-exposure-aspnet-part1/">Part 1</a> 和 <a href="http://lockmedown.com/preventing-sensitive-data-exposure-aspnet-part2/">Part 2</a> 共享了如何简单地管理及保护 ASP.NET 应用中不能外泄的敏感用户数据的方法。</p></li>
+</ul>
+
+<h2 id="其他:cbebda548ae1db85ab246595f2267af6">其他</h2>
+
+<ul>
+<li><a href="http://www.csharpstar.com/top-20-google-amazon-programming-interview-questions/">Top 20 Google &amp; Amazon Programming Interview Questions</a>: 谷歌、亚马逊等世界级 IT 企业面试 C# 开发者时，最常问的技术性问题。</li>
+</ul>
+
+  </section>
+</article>
+
+</main>
+
+
+</div>
+
+<footer>
+  <div class="container">
+    <span class="copyright">&copy; 2016  Beijing Elandsystems Tech News - <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
+

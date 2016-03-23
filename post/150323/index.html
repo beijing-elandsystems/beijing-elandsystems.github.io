@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<meta name="generator" content="Hugo 0.15" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://beijing-elandsystems.github.io/css/style.css" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" type="text/css">
+<link rel="alternate" href="http://beijing-elandsystems.github.io/index.xml" type="application/rss+xml" title="Beijing Elandsystems Tech News">
+<title>150323 - Beijing Elandsystems Tech News</title>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <a class="path" href="http://beijing-elandsystems.github.io">[Beijing Elandsystems Tech News]</a>
+    <span class="caret"># _</span>
+  </div>
+</header>
+
+<div class="container">
+
+
+<main role="main" class="article">
+  
+<article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="meta">
+
+    <span class="key">published on</span>
+    <span class="val"><time itemprop="datePublished" datetime="2016-03-22">March 22, 2016</time></span>
+
+
+
+  </div>
+  <h1 class="headline" itemprop="headline">150323</h1>
+  <section class="body" itemprop="articleBody">
+    
+
+<h2 id="本周-package:6041939a368c5c2f76e2a81c344d50eb">本周 package</h2>
+
+<h3 id="dapper-dot-net:6041939a368c5c2f76e2a81c344d50eb">Dapper-dot-net</h3>
+
+<ul>
+<li><a href="http://stackexchange.github.io/dapper-dot-net/">Dapper-dot-net</a></li>
+</ul>
+
+<p>.NET中能使用的 ORM(Object-Relational Mapper)很多，
+其中Stack Overflow 组开发的Dapper是少数以单纯访问方式进行的ORM之一。
+使用它时，性能方面也可以与直接使用SqlDataReader时的速度相媲美。</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">public</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">Dog</span>
+<span style="color: #f8f8f2">{</span>
+   <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">Id</span> <span style="color: #f8f8f2">{</span> <span style="color: #66d9ef">get</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">set</span><span style="color: #f8f8f2">;</span> <span style="color: #f8f8f2">}</span>
+   <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">int?</span> <span style="color: #f8f8f2">Age</span> <span style="color: #f8f8f2">{</span> <span style="color: #66d9ef">get</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">set</span><span style="color: #f8f8f2">;</span> <span style="color: #f8f8f2">}</span>
+   <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">string</span> <span style="color: #f8f8f2">Name</span> <span style="color: #f8f8f2">{</span> <span style="color: #66d9ef">get</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">set</span><span style="color: #f8f8f2">;</span> <span style="color: #f8f8f2">}</span>
+   <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">float?</span> <span style="color: #f8f8f2">Weight</span> <span style="color: #f8f8f2">{</span> <span style="color: #66d9ef">get</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">set</span><span style="color: #f8f8f2">;</span> <span style="color: #f8f8f2">}</span>
+<span style="color: #f8f8f2">}</span>            
+
+<span style="color: #66d9ef">var</span> <span style="color: #f8f8f2">dogs</span> <span style="color: #f8f8f2">=</span> <span style="color: #f8f8f2">connection.Query&lt;Dog&gt;(</span><span style="color: #e6db74">&quot;select Age = @Age&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">{</span> <span style="color: #f8f8f2">Age</span> <span style="color: #f8f8f2">=</span> <span style="color: #ae81ff">4</span> <span style="color: #f8f8f2">});</span>
+
+<span style="color: #66d9ef">var</span> <span style="color: #f8f8f2">howManyDogs</span> <span style="color: #f8f8f2">=</span> <span style="color: #f8f8f2">dogs.Count();</span>
+<span style="color: #66d9ef">var</span> <span style="color: #f8f8f2">firstDogWeight</span> <span style="color: #f8f8f2">=</span> <span style="color: #f8f8f2">dogs.First().Weight;</span> 
+</pre></div>
+
+
+<h2 id="net-消息:6041939a368c5c2f76e2a81c344d50eb">.NET 消息</h2>
+
+<ul>
+<li><p><a href="https://blogs.microsoft.com/blog/2016/03/07/announcing-sql-server-on-linux/">SQL Server on Linux</a>:
+Microsoft 的SQL Server 预计支持 Linux。
+虽然目前阶段只是preview版本，但是其目标是在2017年中旬公开正式版本。</p></li>
+
+<li><p><a href="http://thebillwagner.com/Blog/Item/2016-03-02-C7FeatureProposalLocalFunctions">C# 7 Feature Proposal: Local Functions</a>:
+Bill Wagner 介绍了要包含至 C# 7.0 版本的功能。</p></li>
+</ul>
+
+<h2 id="asp-net-消息:6041939a368c5c2f76e2a81c344d50eb">ASP.NET 消息</h2>
+
+<ul>
+<li><p><a href="http://aspnetmonsters.com/2016/03/2016-02-28-what-is-middleware-anyway/">What is middleware anyway?</a>:
+Simon Timms 介绍了 ASP.NET Core 中经常涉及到的 Middleware的概念。</p></li>
+
+<li><p><a href="http://www.infragistics.com/community/blogs/dhananjay_kumar/archive/2016/03/04/how-to-create-a-custom-action-filter-in-asp-net-mvc.aspx">How to Create a Custom Action Filter in ASP.NET MVC</a>:
+Dhananjay Kumar 说明了在 ASP.NET MVC 中实现Custom Action Filter的方法。</p></li>
+
+<li><p><a href="http://www.exceptionnotfound.net/custom-validation-in-asp-net-web-api-with-fluentvalidation/">Custom Validation in ASP.NET Web API with FluentValidation</a> :
+Matthew Jones 介绍了为了验证用户所输入值是否有效而使用的FluentValidation library API。</p></li>
+</ul>
+
+<h2 id="其他:6041939a368c5c2f76e2a81c344d50eb">其他</h2>
+
+<ul>
+<li><p><a href="https://medium.com/javascript-and-opinions/state-of-the-art-javascript-in-2016-ab67fc68eb0b">State of the Art JavaScript in 2016</a> :
+Javascript这个领域是变化无常的，它不断地在推出许多框架和技术，
+而Francois Ward在这里介绍了2016年Javascript 的开发趋势。
+他在本文结尾，特别强调了不能因为是广泛使用的技术就一味使用它，
+而是要有取决性地根据需求使用。 (<em>If you don’t need it, don’t use it</em>)</p></li>
+
+<li><p><a href="https://dzone.com/articles/8-ways-to-become-a-better-coder">8 Ways to Become a Better Coder</a>:
+Esther Schindler提供了怎样成为更优秀的开发者的方法。</p></li>
+</ul>
+
+  </section>
+</article>
+
+</main>
+
+
+</div>
+
+<footer>
+  <div class="container">
+    <span class="copyright">&copy; 2016  Beijing Elandsystems Tech News - <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
+

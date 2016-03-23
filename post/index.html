@@ -28,6 +28,21 @@
   
     
 <article class="list-item" itemscope itemtype="http://schema.org/Blog">
+  <h2 class="headline" itemprop="headline"><a href="/post/150323/">150323</a></h2>
+  <div class="meta">
+
+    <span class="key">published on</span>
+    <span class="val"><time itemprop="datePublished" datetime="2016-03-22">March 22, 2016</time></span>
+
+  </div>
+  <section class="summary">
+    本周 package Dapper-dot-net Dapper-dot-net .NET中能使用的 ORM(Object-Relational Mapper)很多， 其中Stack Overflow 组开发的Dapper是少数以单纯访问方式进行的ORM之一。 使用它时，性能方面也可以与直接使用SqlDataReader时的速度相媲美。 public class Dog { public int Id { get; set; } public int? Age { get; set; } public string Name { get; set; } public float? Weight { get; set; } } var dogs = connection.Query&lt;Dog&gt;(&quot;select Age = @Age&quot;, new { Age = 4 }); var howManyDogs = dogs.Count(); var firstDogWeight = dogs.First().Weight; .NET 消息 SQL Server on  <a href="/post/150323/">Read More...</a>
+  </section>
+</article>
+
+  
+    
+<article class="list-item" itemscope itemtype="http://schema.org/Blog">
   <h2 class="headline" itemprop="headline"><a href="/post/150317/">150317</a></h2>
   <div class="meta">
 

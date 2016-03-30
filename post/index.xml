@@ -6,8 +6,85 @@
     <description>Recent content in Posts on Beijing Elandsystems Tech News</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Mar 2016 16:05:35 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 29 Mar 2016 15:14:51 +0800</lastBuildDate>
     <atom:link href="http://beijing-elandsystems.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>150330</title>
+      <link>http://beijing-elandsystems.github.io/post/150330/</link>
+      <pubDate>Tue, 29 Mar 2016 15:14:51 +0800</pubDate>
+      
+      <guid>http://beijing-elandsystems.github.io/post/150330/</guid>
+      <description>
+
+&lt;h2 id=&#34;本周-package:d9d74926076dfbc67699f7f088be8a8a&#34;&gt;本周 Package&lt;/h2&gt;
+
+&lt;h3 id=&#34;bogus:d9d74926076dfbc67699f7f088be8a8a&#34;&gt;Bogus&lt;/h3&gt;
+
+&lt;p&gt;有时候制作 Test code 时，需要一些临时数据来做测试。
+命名变量名就已经很困惑，再加上要生成临时数据，对开发者负担会更多。
+Bogus就是在此时使用的library。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/bchavez/Bogus&#34;&gt;Bogus&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Bogus是 &lt;a href=&#34;https://github.com/bchavez&#34;&gt;Brian Chavez&lt;/a&gt;制作的library，其功能是在生成Class的Instance时，以类似于实际的信息填充文本、图片等多样的数据类型值。
+下面是使用Bogus，生成任意用户数据的代码例子：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var userFaker = new Faker&amp;lt;User&amp;gt;()
+   // User has a constructor that takes a user id and a social security number
+   .CustomInstantiator(f =&amp;gt; new User(userIds++, f.Random.Replace(&amp;quot;###-##-####&amp;quot;)))
+   .RuleFor(u =&amp;gt; u.FirstName, f =&amp;gt; f.Name.FirstName())
+   .RuleFor(u =&amp;gt; u.LastName, f =&amp;gt; f.Name.LastName())
+   .RuleFor(u =&amp;gt; u.Avatar, f =&amp;gt; f.Internet.Avatar())
+   .RuleFor(u =&amp;gt; u.Email, (f, u) =&amp;gt; f.Internet.Email(u.FirstName, u.LastName))
+   //Use an enum
+   .RuleFor(u =&amp;gt; u.Gender, f =&amp;gt; f.PickRandom&amp;lt;Gender&amp;gt;());
+
+var user = userFaker.Generate();
+
+// The created user can look like this:
+/*
+{
+ &amp;quot;Id&amp;quot;: 0,
+ &amp;quot;FirstName&amp;quot;: &amp;quot;Audrey&amp;quot;,
+ &amp;quot;LastName&amp;quot;: &amp;quot;Spencer&amp;quot;,
+ &amp;quot;Email&amp;quot;: &amp;quot;Audrey82@gmail.com&amp;quot;,
+ &amp;quot;Avatar&amp;quot;: &amp;quot;https://s3.amazonaws.com/uifaces/faces/twitter/itstotallyamy/128.jpg&amp;quot;,
+ &amp;quot;SSN&amp;quot;: &amp;quot;923-88-4231&amp;quot;,
+ &amp;quot;Gender&amp;quot;: 0
+}
+*/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;net-资讯:d9d74926076dfbc67699f7f088be8a8a&#34;&gt;.NET 资讯&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;对于在.NET 里也适用的并行处理，Erik Bergman 通过&lt;a href=&#34;http://www.erikbergman.net/2016/03/10/high-speed-applications-parallelism-in-net-part-1/&#34;&gt;part 1&lt;/a&gt; 和 &lt;a href=&#34;http://www.erikbergman.net/2016/03/17/high-speed-applications-parallelism-in-net-part-2/&#34;&gt;part 2&lt;/a&gt;进行了说明。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.simple-talk.com/blogs/2016/02/26/conditionalweaktable-and-dynamic-properties-in-net-4/&#34;&gt;ConditionalWeakTable and dynamic properties in .NET 4+&lt;/a&gt; : Chris Whitworth 介绍了在 .NET Framework 4.0 中涉及的 ConditionalWeakTable&lt;TKey, TValue&gt; 类。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Ayende Rahien在自己的博客中共享了有助于非同步程序开发的&lt;a href=&#34;https://ayende.com/blog/173473/fun-async-tricks-for-getting-better-performance&#34;&gt;Fun async tricks for getting better performance&lt;/a&gt; 和依赖性管理相关内容的&lt;a href=&#34;https://ayende.com/blog/173377/dependencies-management-in-a-crisis?Key=1d4d9b27-fc86-451d-bd4f-2da16b5cfad3&#34;&gt;Dependency management in a crisis&lt;/a&gt;文档。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;asp-net-资讯:d9d74926076dfbc67699f7f088be8a8a&#34;&gt;ASP.NET 资讯&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.codeproject.com/Articles/1078249/RESTful-Web-API-Help-Documentation-using-Swagger-U&#34;&gt;RESTful Web API Help Documentation using Swagger UI and Swashbuckle&lt;/a&gt; : Sreekanth Mothukuru 利用 Swagger UI 和 Swashbuckle ，共享了制作 RESTful Web API 帮助文档的方法。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.simple-talk.com/dotnet/asp.net/keeping-post-and-get-separated/&#34;&gt;Keeping POST and GET Separated&lt;/a&gt; : Dino Esposito 在自己的博客中共享了分离 HTTP 中 POST 与 GET 的 PRG(Post-Redirect-Get) pattern相关的文章。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://weblog.west-wind.com/posts/2016/Feb/22/Using-Lets-Encrypt-with-IIS-on-Windows&#34;&gt;Using Let’s Encrypt with IIS on Windows&lt;/a&gt; : Rick Strahl 介绍了opensource认证书 Let’s Encrypt，并且说明了设置到 IIS的方法。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;其他:d9d74926076dfbc67699f7f088be8a8a&#34;&gt;其他&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.devbattles.com/en/sand/post-1298-31+Of+The+Best+Kept+Secrets+Of+Great+Programmers&#34;&gt;31 Of The Best Kept Secrets Of Great Programmers&lt;/a&gt;: 讲述了成为伟大编程师的31种方法。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>150323</title>

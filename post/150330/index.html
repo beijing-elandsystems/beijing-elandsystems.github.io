@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<meta name="generator" content="Hugo 0.15" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://beijing-elandsystems.github.io/css/style.css" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" type="text/css">
+<link rel="alternate" href="http://beijing-elandsystems.github.io/index.xml" type="application/rss+xml" title="Beijing Elandsystems Tech News">
+<title>150330 - Beijing Elandsystems Tech News</title>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <a class="path" href="http://beijing-elandsystems.github.io">[Beijing Elandsystems Tech News]</a>
+    <span class="caret"># _</span>
+  </div>
+</header>
+
+<div class="container">
+
+
+<main role="main" class="article">
+  
+<article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="meta">
+
+    <span class="key">published on</span>
+    <span class="val"><time itemprop="datePublished" datetime="2016-03-29">March 29, 2016</time></span>
+
+
+
+  </div>
+  <h1 class="headline" itemprop="headline">150330</h1>
+  <section class="body" itemprop="articleBody">
+    
+
+<h2 id="本周-package:d9d74926076dfbc67699f7f088be8a8a">本周 Package</h2>
+
+<h3 id="bogus:d9d74926076dfbc67699f7f088be8a8a">Bogus</h3>
+
+<p>有时候制作 Test code 时，需要一些临时数据来做测试。
+命名变量名就已经很困惑，再加上要生成临时数据，对开发者负担会更多。
+Bogus就是在此时使用的library。</p>
+
+<ul>
+<li><a href="https://github.com/bchavez/Bogus">Bogus</a></li>
+</ul>
+
+<p>Bogus是 <a href="https://github.com/bchavez">Brian Chavez</a>制作的library，其功能是在生成Class的Instance时，以类似于实际的信息填充文本、图片等多样的数据类型值。
+下面是使用Bogus，生成任意用户数据的代码例子：</p>
+
+<pre><code>var userFaker = new Faker&lt;User&gt;()
+   // User has a constructor that takes a user id and a social security number
+   .CustomInstantiator(f =&gt; new User(userIds++, f.Random.Replace(&quot;###-##-####&quot;)))
+   .RuleFor(u =&gt; u.FirstName, f =&gt; f.Name.FirstName())
+   .RuleFor(u =&gt; u.LastName, f =&gt; f.Name.LastName())
+   .RuleFor(u =&gt; u.Avatar, f =&gt; f.Internet.Avatar())
+   .RuleFor(u =&gt; u.Email, (f, u) =&gt; f.Internet.Email(u.FirstName, u.LastName))
+   //Use an enum
+   .RuleFor(u =&gt; u.Gender, f =&gt; f.PickRandom&lt;Gender&gt;());
+
+var user = userFaker.Generate();
+
+// The created user can look like this:
+/*
+{
+ &quot;Id&quot;: 0,
+ &quot;FirstName&quot;: &quot;Audrey&quot;,
+ &quot;LastName&quot;: &quot;Spencer&quot;,
+ &quot;Email&quot;: &quot;Audrey82@gmail.com&quot;,
+ &quot;Avatar&quot;: &quot;https://s3.amazonaws.com/uifaces/faces/twitter/itstotallyamy/128.jpg&quot;,
+ &quot;SSN&quot;: &quot;923-88-4231&quot;,
+ &quot;Gender&quot;: 0
+}
+*/
+</code></pre>
+
+<h2 id="net-资讯:d9d74926076dfbc67699f7f088be8a8a">.NET 资讯</h2>
+
+<ul>
+<li><p>对于在.NET 里也适用的并行处理，Erik Bergman 通过<a href="http://www.erikbergman.net/2016/03/10/high-speed-applications-parallelism-in-net-part-1/">part 1</a> 和 <a href="http://www.erikbergman.net/2016/03/17/high-speed-applications-parallelism-in-net-part-2/">part 2</a>进行了说明。</p></li>
+
+<li><p><a href="https://www.simple-talk.com/blogs/2016/02/26/conditionalweaktable-and-dynamic-properties-in-net-4/">ConditionalWeakTable and dynamic properties in .NET 4+</a> : Chris Whitworth 介绍了在 .NET Framework 4.0 中涉及的 ConditionalWeakTable<TKey, TValue> 类。</p></li>
+
+<li><p>Ayende Rahien在自己的博客中共享了有助于非同步程序开发的<a href="https://ayende.com/blog/173473/fun-async-tricks-for-getting-better-performance">Fun async tricks for getting better performance</a> 和依赖性管理相关内容的<a href="https://ayende.com/blog/173377/dependencies-management-in-a-crisis?Key=1d4d9b27-fc86-451d-bd4f-2da16b5cfad3">Dependency management in a crisis</a>文档。</p></li>
+</ul>
+
+<h2 id="asp-net-资讯:d9d74926076dfbc67699f7f088be8a8a">ASP.NET 资讯</h2>
+
+<ul>
+<li><p><a href="http://www.codeproject.com/Articles/1078249/RESTful-Web-API-Help-Documentation-using-Swagger-U">RESTful Web API Help Documentation using Swagger UI and Swashbuckle</a> : Sreekanth Mothukuru 利用 Swagger UI 和 Swashbuckle ，共享了制作 RESTful Web API 帮助文档的方法。</p></li>
+
+<li><p><a href="https://www.simple-talk.com/dotnet/asp.net/keeping-post-and-get-separated/">Keeping POST and GET Separated</a> : Dino Esposito 在自己的博客中共享了分离 HTTP 中 POST 与 GET 的 PRG(Post-Redirect-Get) pattern相关的文章。</p></li>
+
+<li><p><a href="http://weblog.west-wind.com/posts/2016/Feb/22/Using-Lets-Encrypt-with-IIS-on-Windows">Using Let’s Encrypt with IIS on Windows</a> : Rick Strahl 介绍了opensource认证书 Let’s Encrypt，并且说明了设置到 IIS的方法。</p></li>
+</ul>
+
+<h2 id="其他:d9d74926076dfbc67699f7f088be8a8a">其他</h2>
+
+<ul>
+<li><a href="https://www.devbattles.com/en/sand/post-1298-31+Of+The+Best+Kept+Secrets+Of+Great+Programmers">31 Of The Best Kept Secrets Of Great Programmers</a>: 讲述了成为伟大编程师的31种方法。</li>
+</ul>
+
+  </section>
+</article>
+
+</main>
+
+
+</div>
+
+<footer>
+  <div class="container">
+    <span class="copyright">&copy; 2016  Beijing Elandsystems Tech News - <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
+

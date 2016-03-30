@@ -47,6 +47,21 @@
     
       
 <article class="list-item" itemscope itemtype="http://schema.org/Blog">
+  <h2 class="headline" itemprop="headline"><a href="/post/150330/">150330</a></h2>
+  <div class="meta">
+
+    <span class="key">published on</span>
+    <span class="val"><time itemprop="datePublished" datetime="2016-03-29">March 29, 2016</time></span>
+
+  </div>
+  <section class="summary">
+    本周 Package Bogus 有时候制作 Test code 时，需要一些临时数据来做测试。 命名变量名就已经很困惑，再加上要生成临时数据，对开发者负担会更多。 Bogus就是在此时使用的library。 Bogus Bogus是 Brian Chavez制作的library，其功能是在生成Class的Instance时，以类似于实际的信息填充文本、图片等多样的数据类型值。 下面是使用Bogus，生成任意用户数据的代码例子： var userFaker = new Faker&lt;User&gt;() // User has a constructor that takes a user id and a social security number .CustomInstantiator(f =&gt; new User(userIds++, f.Random.Replace(&quot;###-##-####&quot;))) .RuleFor(u =&gt; u.FirstName, f =&gt; f.Name.FirstName()) .RuleFor(u =&gt; u.LastName, f =&gt; f.Name.LastName()) .RuleFor(u =&gt; u.Avatar, f =&gt; f.Internet.Avatar()) .RuleFor(u =&gt; u.Email, (f, u) =&gt; f.Internet.Email(u.FirstName, u.LastName)) //Use an enum .RuleFor(u =&gt;  <a href="/post/150330/">Read More...</a>
+  </section>
+</article>
+
+    
+      
+<article class="list-item" itemscope itemtype="http://schema.org/Blog">
   <h2 class="headline" itemprop="headline"><a href="/post/150323/">150323</a></h2>
   <div class="meta">
 
@@ -71,21 +86,6 @@
   </div>
   <section class="summary">
     本周 package RestSharp RestSharp 使用 REST API时，不像对象 Serialization 或用户认证一样单单用标准 HTTP 技术就能解决所有问题， 而 RestSharp 便是为此提供的，是一种实现使用 REST API 时所需的功能的 .NET library。 var client = new RestClient(&quot;http://example.com&quot;); // client.Authenticator = new HttpBasicAuthenticator(username, password); var request = new RestRequest(&quot;resource/{id}&quot;, Method.POST); request.AddParameter(&quot;name&quot;, &quot;value&quot;); // adds to POST or URL querystring based on Method request.AddUrlSegment(&quot;id&quot;, &quot;123&quot;); // replaces matching token in request.Resource // easily add HTTP Headers request.AddHeader(&quot;header&quot;, &quot;value&quot;); // add files to upload (works with  <a href="/post/150317/">Read More...</a>
-  </section>
-</article>
-
-    
-      
-<article class="list-item" itemscope itemtype="http://schema.org/Blog">
-  <h2 class="headline" itemprop="headline"><a href="/post/150310/">150310</a></h2>
-  <div class="meta">
-
-    <span class="key">published on</span>
-    <span class="val"><time itemprop="datePublished" datetime="2016-03-10">March 10, 2016</time></span>
-
-  </div>
-  <section class="summary">
-    本周 package HtmlAgilityPack 有时候会需要从HTML 文档抽取信息。 由于 HTML 也是 XML 形式的文档，所以可以简单地直接制作 Parser，或者使用 Regular Expression。 但是比起这两种方式，通过专业的 HTML Parser 使用 DOM 来抽取会更好， 而 HtmlAgilityPack library 就是为此提供的。 HtmlAgilityPack var httpClient = new HttpClient(); var html = await httpClient.GetStringAsync(&quot;http://blogs.msdn.com/b/dotnet/&quot;); var dom = new HtmlDocument(); dom.LoadHtml(html); var imageUrls = dom.DocumentNode .SelectNodes(&quot;//img&quot;) .Select(n =&gt; n.Attributes[&quot;src&quot;].Value) .Distinct(); foreach(var url in imageUrls) { Console.WriteLine(url); } AngleSharp AngleSharp library与使用 XPath 方式的 HtmlAgilityPack 不同， 它支持CSS，它会经常更新，以便支持最新技术。 AngleSharp 通过 HtmlAgilityPack liarary 制作的功能，用 AngleSharp  <a href="/post/150310/">Read More...</a>
   </section>
 </article>
 

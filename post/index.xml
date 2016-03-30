@@ -32,31 +32,32 @@ Bogus就是在此时使用的library。&lt;/p&gt;
 &lt;p&gt;Bogus是 &lt;a href=&#34;https://github.com/bchavez&#34;&gt;Brian Chavez&lt;/a&gt;制作的library，其功能是在生成Class的Instance时，以类似于实际的信息填充文本、图片等多样的数据类型值。
 下面是使用Bogus，生成任意用户数据的代码例子：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;var userFaker = new Faker&amp;lt;User&amp;gt;()
-   // User has a constructor that takes a user id and a social security number
-   .CustomInstantiator(f =&amp;gt; new User(userIds++, f.Random.Replace(&amp;quot;###-##-####&amp;quot;)))
-   .RuleFor(u =&amp;gt; u.FirstName, f =&amp;gt; f.Name.FirstName())
-   .RuleFor(u =&amp;gt; u.LastName, f =&amp;gt; f.Name.LastName())
-   .RuleFor(u =&amp;gt; u.Avatar, f =&amp;gt; f.Internet.Avatar())
-   .RuleFor(u =&amp;gt; u.Email, (f, u) =&amp;gt; f.Internet.Email(u.FirstName, u.LastName))
-   //Use an enum
-   .RuleFor(u =&amp;gt; u.Gender, f =&amp;gt; f.PickRandom&amp;lt;Gender&amp;gt;());
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;userFaker&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;Faker&amp;lt;User&amp;gt;()&lt;/span&gt;
+   &lt;span style=&#34;color: #75715e&#34;&gt;// User has a constructor that takes a user id and a social security number&lt;/span&gt;
+   &lt;span style=&#34;color: #f8f8f2&#34;&gt;.CustomInstantiator(f&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;User(userIds++,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;f.Random.Replace(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;###-##-####&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)))&lt;/span&gt;
+   &lt;span style=&#34;color: #f8f8f2&#34;&gt;.RuleFor(u&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;u.FirstName,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;f&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;f.Name.FirstName())&lt;/span&gt;
+   &lt;span style=&#34;color: #f8f8f2&#34;&gt;.RuleFor(u&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;u.LastName,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;f&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;f.Name.LastName())&lt;/span&gt;
+   &lt;span style=&#34;color: #f8f8f2&#34;&gt;.RuleFor(u&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;u.Avatar,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;f&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;f.Internet.Avatar())&lt;/span&gt;
+   &lt;span style=&#34;color: #f8f8f2&#34;&gt;.RuleFor(u&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;u.Email,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(f,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;u)&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;f.Internet.Email(u.FirstName,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;u.LastName))&lt;/span&gt;
+   &lt;span style=&#34;color: #75715e&#34;&gt;//Use an enum&lt;/span&gt;
+   &lt;span style=&#34;color: #f8f8f2&#34;&gt;.RuleFor(u&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;u.Gender,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;f&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;f.PickRandom&amp;lt;Gender&amp;gt;());&lt;/span&gt;
 
-var user = userFaker.Generate();
+&lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;user&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;userFaker.Generate();&lt;/span&gt;
 
-// The created user can look like this:
-/*
-{
- &amp;quot;Id&amp;quot;: 0,
- &amp;quot;FirstName&amp;quot;: &amp;quot;Audrey&amp;quot;,
- &amp;quot;LastName&amp;quot;: &amp;quot;Spencer&amp;quot;,
- &amp;quot;Email&amp;quot;: &amp;quot;Audrey82@gmail.com&amp;quot;,
- &amp;quot;Avatar&amp;quot;: &amp;quot;https://s3.amazonaws.com/uifaces/faces/twitter/itstotallyamy/128.jpg&amp;quot;,
- &amp;quot;SSN&amp;quot;: &amp;quot;923-88-4231&amp;quot;,
- &amp;quot;Gender&amp;quot;: 0
-}
-*/
-&lt;/code&gt;&lt;/pre&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt;// The created user can look like this:&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt;/*&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt;{&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt; &amp;quot;Id&amp;quot;: 0,&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt; &amp;quot;FirstName&amp;quot;: &amp;quot;Audrey&amp;quot;,&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt; &amp;quot;LastName&amp;quot;: &amp;quot;Spencer&amp;quot;,&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt; &amp;quot;Email&amp;quot;: &amp;quot;Audrey82@gmail.com&amp;quot;,&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt; &amp;quot;Avatar&amp;quot;: &amp;quot;https://s3.amazonaws.com/uifaces/faces/twitter/itstotallyamy/128.jpg&amp;quot;,&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt; &amp;quot;SSN&amp;quot;: &amp;quot;923-88-4231&amp;quot;,&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt; &amp;quot;Gender&amp;quot;: 0&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt;*/&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
 
 &lt;h2 id=&#34;net-资讯:d9d74926076dfbc67699f7f088be8a8a&#34;&gt;.NET 资讯&lt;/h2&gt;
 

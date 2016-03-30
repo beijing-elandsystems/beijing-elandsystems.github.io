@@ -54,31 +54,32 @@ Bogus就是在此时使用的library。</p>
 <p>Bogus是 <a href="https://github.com/bchavez">Brian Chavez</a>制作的library，其功能是在生成Class的Instance时，以类似于实际的信息填充文本、图片等多样的数据类型值。
 下面是使用Bogus，生成任意用户数据的代码例子：</p>
 
-<pre><code>var userFaker = new Faker&lt;User&gt;()
-   // User has a constructor that takes a user id and a social security number
-   .CustomInstantiator(f =&gt; new User(userIds++, f.Random.Replace(&quot;###-##-####&quot;)))
-   .RuleFor(u =&gt; u.FirstName, f =&gt; f.Name.FirstName())
-   .RuleFor(u =&gt; u.LastName, f =&gt; f.Name.LastName())
-   .RuleFor(u =&gt; u.Avatar, f =&gt; f.Internet.Avatar())
-   .RuleFor(u =&gt; u.Email, (f, u) =&gt; f.Internet.Email(u.FirstName, u.LastName))
-   //Use an enum
-   .RuleFor(u =&gt; u.Gender, f =&gt; f.PickRandom&lt;Gender&gt;());
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">var</span> <span style="color: #f8f8f2">userFaker</span> <span style="color: #f8f8f2">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">Faker&lt;User&gt;()</span>
+   <span style="color: #75715e">// User has a constructor that takes a user id and a social security number</span>
+   <span style="color: #f8f8f2">.CustomInstantiator(f</span> <span style="color: #f8f8f2">=&gt;</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">User(userIds++,</span> <span style="color: #f8f8f2">f.Random.Replace(</span><span style="color: #e6db74">&quot;###-##-####&quot;</span><span style="color: #f8f8f2">)))</span>
+   <span style="color: #f8f8f2">.RuleFor(u</span> <span style="color: #f8f8f2">=&gt;</span> <span style="color: #f8f8f2">u.FirstName,</span> <span style="color: #f8f8f2">f</span> <span style="color: #f8f8f2">=&gt;</span> <span style="color: #f8f8f2">f.Name.FirstName())</span>
+   <span style="color: #f8f8f2">.RuleFor(u</span> <span style="color: #f8f8f2">=&gt;</span> <span style="color: #f8f8f2">u.LastName,</span> <span style="color: #f8f8f2">f</span> <span style="color: #f8f8f2">=&gt;</span> <span style="color: #f8f8f2">f.Name.LastName())</span>
+   <span style="color: #f8f8f2">.RuleFor(u</span> <span style="color: #f8f8f2">=&gt;</span> <span style="color: #f8f8f2">u.Avatar,</span> <span style="color: #f8f8f2">f</span> <span style="color: #f8f8f2">=&gt;</span> <span style="color: #f8f8f2">f.Internet.Avatar())</span>
+   <span style="color: #f8f8f2">.RuleFor(u</span> <span style="color: #f8f8f2">=&gt;</span> <span style="color: #f8f8f2">u.Email,</span> <span style="color: #f8f8f2">(f,</span> <span style="color: #f8f8f2">u)</span> <span style="color: #f8f8f2">=&gt;</span> <span style="color: #f8f8f2">f.Internet.Email(u.FirstName,</span> <span style="color: #f8f8f2">u.LastName))</span>
+   <span style="color: #75715e">//Use an enum</span>
+   <span style="color: #f8f8f2">.RuleFor(u</span> <span style="color: #f8f8f2">=&gt;</span> <span style="color: #f8f8f2">u.Gender,</span> <span style="color: #f8f8f2">f</span> <span style="color: #f8f8f2">=&gt;</span> <span style="color: #f8f8f2">f.PickRandom&lt;Gender&gt;());</span>
 
-var user = userFaker.Generate();
+<span style="color: #66d9ef">var</span> <span style="color: #f8f8f2">user</span> <span style="color: #f8f8f2">=</span> <span style="color: #f8f8f2">userFaker.Generate();</span>
 
-// The created user can look like this:
-/*
-{
- &quot;Id&quot;: 0,
- &quot;FirstName&quot;: &quot;Audrey&quot;,
- &quot;LastName&quot;: &quot;Spencer&quot;,
- &quot;Email&quot;: &quot;Audrey82@gmail.com&quot;,
- &quot;Avatar&quot;: &quot;https://s3.amazonaws.com/uifaces/faces/twitter/itstotallyamy/128.jpg&quot;,
- &quot;SSN&quot;: &quot;923-88-4231&quot;,
- &quot;Gender&quot;: 0
-}
-*/
-</code></pre>
+<span style="color: #75715e">// The created user can look like this:</span>
+<span style="color: #75715e">/*</span>
+<span style="color: #75715e">{</span>
+<span style="color: #75715e"> &quot;Id&quot;: 0,</span>
+<span style="color: #75715e"> &quot;FirstName&quot;: &quot;Audrey&quot;,</span>
+<span style="color: #75715e"> &quot;LastName&quot;: &quot;Spencer&quot;,</span>
+<span style="color: #75715e"> &quot;Email&quot;: &quot;Audrey82@gmail.com&quot;,</span>
+<span style="color: #75715e"> &quot;Avatar&quot;: &quot;https://s3.amazonaws.com/uifaces/faces/twitter/itstotallyamy/128.jpg&quot;,</span>
+<span style="color: #75715e"> &quot;SSN&quot;: &quot;923-88-4231&quot;,</span>
+<span style="color: #75715e"> &quot;Gender&quot;: 0</span>
+<span style="color: #75715e">}</span>
+<span style="color: #75715e">*/</span>
+</pre></div>
+
 
 <h2 id="net-资讯:d9d74926076dfbc67699f7f088be8a8a">.NET 资讯</h2>
 

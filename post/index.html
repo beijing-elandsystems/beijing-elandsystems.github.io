@@ -1,100 +1,116 @@
+
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-<meta charset="utf-8">
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="">
-<meta name="generator" content="Hugo 0.15" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://beijing-elandsystems.github.io/css/style.css" type="text/css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" type="text/css">
-<link rel="alternate" href="http://beijing-elandsystems.github.io/index.xml" type="application/rss+xml" title="Beijing Elandsystems Tech News">
-<title>Posts - Beijing Elandsystems Tech News</title>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    Posts | Beijing Elandsystems Tech News
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="http://beijing-elandsystems.github.io/post/"/>
+
+  
+  <link rel="stylesheet" href="/css/sanitize.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/highlight_monokai.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  
+  <link href="http://beijing-elandsystems.github.ioindex.xml" rel="alternate" type="application/rss+xml" title="Beijing Elandsystems Tech News" />
+  <link href="http://beijing-elandsystems.github.ioindex.xml" rel="feed" type="application/rss+xml" title="Beijing Elandsystems Tech News" />
+
+  
+  
+
+
 </head>
+
+
+
 <body>
-
-<header>
-  <div class="container">
-    <a class="path" href="http://beijing-elandsystems.github.io">[Beijing Elandsystems Tech News]</a>
-    <span class="caret"># _</span>
-  </div>
-</header>
-
 <div class="container">
 
-<main role="main" class="article-list">
-  <h1 class="list-title">Posts</h1>
   
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="http://beijing-elandsystems.github.io">Beijing Elandsystems Tech News</a></h1>
+        
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+  
+  <main id="list" role="main">
+    <div class="article-header light-gray"><h1>#Posts</h1></div>
     
-<article class="list-item" itemscope itemtype="http://schema.org/Blog">
-  <h2 class="headline" itemprop="headline"><a href="/post/150330/">150330</a></h2>
-  <div class="meta">
-
-    <span class="key">published on</span>
-    <span class="val"><time itemprop="datePublished" datetime="2016-03-29">March 29, 2016</time></span>
-
-  </div>
-  <section class="summary">
-    本周 Package Bogus 有时候制作 Test code 时，需要一些临时数据来做测试。 命名变量名就已经很困惑，再加上要生成临时数据，对开发者负担会更多。 Bogus就是在此时使用的library。 Bogus Bogus是 Brian Chavez制作的library，其功能是在生成Class的Instance时，以类似于实际的信息填充文本、图片等多样的数据类型值。 下面是使用Bogus，生成任意用户数据的代码例子： var userFaker = new Faker&lt;User&gt;() // User has a constructor that takes a user id and a social security number .CustomInstantiator(f =&gt; new User(userIds++, f.Random.Replace(&quot;###-##-####&quot;))) .RuleFor(u =&gt; u.FirstName, f =&gt; f.Name.FirstName()) .RuleFor(u =&gt; u.LastName, f =&gt; f.Name.LastName()) .RuleFor(u =&gt; u.Avatar, f =&gt; f.Internet.Avatar()) .RuleFor(u =&gt; u.Email, (f, u) =&gt; f.Internet.Email(u.FirstName, u.LastName)) //Use an enum .RuleFor(u =&gt;  <a href="/post/150330/">Read More...</a>
-  </section>
-</article>
-
-  
+    <div class="summary">
+      <h2><a href="http://beijing-elandsystems.github.io/post/150330/">150330 </a></h2>
+      <div class="meta">
+        Mar 29, 2016 &nbsp;
+        
+      </div>
+    </div>
     
-<article class="list-item" itemscope itemtype="http://schema.org/Blog">
-  <h2 class="headline" itemprop="headline"><a href="/post/150323/">150323</a></h2>
-  <div class="meta">
-
-    <span class="key">published on</span>
-    <span class="val"><time itemprop="datePublished" datetime="2016-03-22">March 22, 2016</time></span>
-
-  </div>
-  <section class="summary">
-    本周 package Dapper-dot-net Dapper-dot-net .NET中能使用的 ORM(Object-Relational Mapper)很多， 其中Stack Overflow 组开发的Dapper是少数以单纯访问方式进行的ORM之一。 使用它时，性能方面也可以与直接使用SqlDataReader时的速度相媲美。 public class Dog { public int Id { get; set; } public int? Age { get; set; } public string Name { get; set; } public float? Weight { get; set; } } var dogs = connection.Query&lt;Dog&gt;(&quot;select Age = @Age&quot;, new { Age = 4 }); var howManyDogs = dogs.Count(); var firstDogWeight = dogs.First().Weight; .NET 消息 SQL Server on  <a href="/post/150323/">Read More...</a>
-  </section>
-</article>
-
-  
+    <div class="summary">
+      <h2><a href="http://beijing-elandsystems.github.io/post/150323/">150323 </a></h2>
+      <div class="meta">
+        Mar 22, 2016 &nbsp;
+        
+      </div>
+    </div>
     
-<article class="list-item" itemscope itemtype="http://schema.org/Blog">
-  <h2 class="headline" itemprop="headline"><a href="/post/150317/">150317</a></h2>
-  <div class="meta">
-
-    <span class="key">published on</span>
-    <span class="val"><time itemprop="datePublished" datetime="2016-03-15">March 15, 2016</time></span>
-
-  </div>
-  <section class="summary">
-    本周 package RestSharp RestSharp 使用 REST API时，不像对象 Serialization 或用户认证一样单单用标准 HTTP 技术就能解决所有问题， 而 RestSharp 便是为此提供的，是一种实现使用 REST API 时所需的功能的 .NET library。 var client = new RestClient(&quot;http://example.com&quot;); // client.Authenticator = new HttpBasicAuthenticator(username, password); var request = new RestRequest(&quot;resource/{id}&quot;, Method.POST); request.AddParameter(&quot;name&quot;, &quot;value&quot;); // adds to POST or URL querystring based on Method request.AddUrlSegment(&quot;id&quot;, &quot;123&quot;); // replaces matching token in request.Resource // easily add HTTP Headers request.AddHeader(&quot;header&quot;, &quot;value&quot;); // add files to upload (works with  <a href="/post/150317/">Read More...</a>
-  </section>
-</article>
-
-  
+    <div class="summary">
+      <h2><a href="http://beijing-elandsystems.github.io/post/150317/">150317 </a></h2>
+      <div class="meta">
+        Mar 15, 2016 &nbsp;
+        
+      </div>
+    </div>
     
-<article class="list-item" itemscope itemtype="http://schema.org/Blog">
-  <h2 class="headline" itemprop="headline"><a href="/post/150310/">150310</a></h2>
-  <div class="meta">
+    <div class="summary">
+      <h2><a href="http://beijing-elandsystems.github.io/post/150310/">150310 </a></h2>
+      <div class="meta">
+        Mar 10, 2016 &nbsp;
+        
+      </div>
+    </div>
+    
+  </main>
 
-    <span class="key">published on</span>
-    <span class="val"><time itemprop="datePublished" datetime="2016-03-10">March 10, 2016</time></span>
-
-  </div>
-  <section class="summary">
-    本周 package HtmlAgilityPack 有时候会需要从HTML 文档抽取信息。 由于 HTML 也是 XML 形式的文档，所以可以简单地直接制作 Parser，或者使用 Regular Expression。 但是比起这两种方式，通过专业的 HTML Parser 使用 DOM 来抽取会更好， 而 HtmlAgilityPack library 就是为此提供的。 HtmlAgilityPack var httpClient = new HttpClient(); var html = await httpClient.GetStringAsync(&quot;http://blogs.msdn.com/b/dotnet/&quot;); var dom = new HtmlDocument(); dom.LoadHtml(html); var imageUrls = dom.DocumentNode .SelectNodes(&quot;//img&quot;) .Select(n =&gt; n.Attributes[&quot;src&quot;].Value) .Distinct(); foreach(var url in imageUrls) { Console.WriteLine(url); } AngleSharp AngleSharp library与使用 XPath 方式的 HtmlAgilityPack 不同， 它支持CSS，它会经常更新，以便支持最新技术。 AngleSharp 通过 HtmlAgilityPack liarary 制作的功能，用 AngleSharp  <a href="/post/150310/">Read More...</a>
-  </section>
-</article>
 
   
-</main>
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      <img src="/images/profile.png" width="64" height="64"><br>
+      Beijing ELANDSYSTEMS Technology Development CO., LTD
+    </div>
+  </footer>
+
 
 </div>
 
-<footer>
-  <div class="container">
-    <span class="copyright">&copy; 2016  Beijing Elandsystems Tech News - <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span>
-  </div>
-</footer>
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
 
 </body>
 </html>

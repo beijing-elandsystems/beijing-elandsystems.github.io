@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    150406 | Beijing Elandsystems Tech News
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="http://beijing-elandsystems.github.io/post/150406/"/>
+
+  
+  <link rel="stylesheet" href="/css/sanitize.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/highlight_monokai.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  
+  <link href="http://beijing-elandsystems.github.ioindex.xml" rel="alternate" type="application/rss+xml" title="Beijing Elandsystems Tech News" />
+  <link href="http://beijing-elandsystems.github.ioindex.xml" rel="feed" type="application/rss+xml" title="Beijing Elandsystems Tech News" />
+
+  
+  
+
+
+</head>
+
+
+
+<body>
+<div class="container">
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="http://beijing-elandsystems.github.io">Beijing Elandsystems Tech News</a></h1>
+        
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+  
+  <main id="single" role="main">
+    <div class="article-header">
+      <h1>150406</h1>
+      <div class="meta">
+        Apr 6, 2016 &nbsp;
+        
+      </div>
+    </div>
+    <article>
+      
+
+<h2 id="本周-package:80656b7efe032c9381042fa60c037ce3">本周 package</h2>
+
+<h3 id="polly:80656b7efe032c9381042fa60c037ce3">Polly</h3>
+
+<ul>
+<li><a href="https://github.com/App-vNext/Polly">Polly</a></li>
+</ul>
+
+<p>发生短暂 exception 时，<code>Polly</code> 会提供多样的 API，使其以 Retry, Retry Forever, Wait and Retry, Circuit Breaker 等方式进行处理。</p>
+
+<p>以下是用 <code>Polly</code> 实现的逻辑代码：
+当客户端程序访问远程服务失败时，过一段时间后试图再访问。</p>
+
+<pre><code>await Policy
+ .Handle&lt;TimeoutException&gt;()
+ .Or&lt;HttpException&gt;(ex =&gt; ex.WebEventCode == WebEventCodes.RuntimeErrorRequestAbort)
+ .WaitAndRetryAsync(new[] {1.Seconds(), 5.Seconds()})
+ .ExecuteAsync(() =&gt; DoSomethingAsync());
+</code></pre>
+
+<h2 id="net-消息:80656b7efe032c9381042fa60c037ce3">.NET 消息</h2>
+
+<ul>
+<li><p><a href="https://build.microsoft.com/">Build 2016</a> : 承载着许多令人震惊的消息的微软开发活动<strong>Build 2016</strong>隆重收尾，<a href="https://channel9.msdn.com/">channel9</a>中可以重新回顾所有Build 2016 的 session。</p></li>
+
+<li><p><a href="https://blog.xamarin.com/xamarin-for-all">Xamarin for Everyone</a> : 微软收购 Xamarin 的一个月内，免费发布Xamarin 提供给所有人使用。</p></li>
+
+<li><p><a href="http://techcrunch.com/2016/03/30/be-very-afraid-hell-has-frozen-over-bash-is-coming-to-windows-10/">Microsoft is bringing the Bash shell to Windows 10</a> : 微软表示将以window 10 update提供Bash Shell，Bash Shell是在 Linux和OS X中使用的，而 MS 目前为止使用的是自己的PowerShell。并且说明了可以以Native（而不是虚拟）使用 Ubuntu 的所有环境。(<a href="http://fossbytes.com/microsoft-canonical-bring-ubuntu-linux-on-windows-10/">Ubuntu Linux Is Coming To Windows 10</a>).</p></li>
+
+<li><p><a href="https://blog.xamarin.com/cross-platform-messaging-for-ios-android-and-windows/">Cross-Platform Messaging for iOS, Android, and Windows</a> : Pierce Boggan 介绍了Xamarin及Window用的 Library，并在Xamarin开发者的博客上共享了可以通过这个实现SMS短信发送、打电话、发送邮件等功能的多平台(iOS, Android, and Windows) 信息插件的使用方法。</p></li>
+</ul>
+
+<h2 id="asp-net-消息:80656b7efe032c9381042fa60c037ce3">ASP.NET 消息</h2>
+
+<ul>
+<li><p><a href="http://www.dotnetcurry.com/aspnet-mvc/1261/custom-model-binder-aspnet-mvc">Custom Model Binder in ASP.NET MVC</a> : Mahesh Sabni 介绍了Custom Model Binder如何根据 ASP.NET MVC model 的申请与数据匹配提供相应规律的实现方法。</p></li>
+
+<li><p><a href="http://www.elanderson.net/2016/03/dependency-injection-conditional-registration-in-asp-net-core/">Dependency Injection Conditional Registration in ASP.NET Core</a> : Eric L. Anderson 介绍了在 ASP.NET Core 中 Dependency Injection的多种使用方式。</p></li>
+
+<li><p><a href="http://rehansaeed.com/social-taghelpers-for-asp-net-core/">Social TagHelpers for ASP.NET Core</a> : Muhammad Rehan Saeed 共享了在 ASP.NET Core 中通过 Facebook, Twitter, Google+, Pintrest 等网站共享page时使用的meta tag相关内容。</p></li>
+</ul>
+
+      
+      
+      
+    </article>
+    
+ <aside><div id="disqus_thread"></div></aside> 
+
+<script type="text/javascript">
+     
+    var disqus_shortname = 'tanksuzuki';
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  </main>
+  
+  <nav class="pagination-single">
+    
+      <span class="previous">&larr; <a href="http://beijing-elandsystems.github.io/post/150330/" rel="prev">150330</a></span>
+    
+    
+  </nav>
+
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      <img src="/images/profile.png" width="64" height="64"><br>
+      Beijing ELANDSYSTEMS Technology Development CO., LTD
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>
+

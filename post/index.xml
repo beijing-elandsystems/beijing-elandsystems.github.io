@@ -6,8 +6,60 @@
     <description>Recent content in Posts on Beijing Elandsystems Tech News</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Mar 2016 15:14:51 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 06 Apr 2016 23:22:54 +0800</lastBuildDate>
     <atom:link href="http://beijing-elandsystems.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>150406</title>
+      <link>http://beijing-elandsystems.github.io/post/150406/</link>
+      <pubDate>Wed, 06 Apr 2016 23:22:54 +0800</pubDate>
+      
+      <guid>http://beijing-elandsystems.github.io/post/150406/</guid>
+      <description>
+
+&lt;h2 id=&#34;本周-package:80656b7efe032c9381042fa60c037ce3&#34;&gt;本周 package&lt;/h2&gt;
+
+&lt;h3 id=&#34;polly:80656b7efe032c9381042fa60c037ce3&#34;&gt;Polly&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/App-vNext/Polly&#34;&gt;Polly&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;发生短暂 exception 时，&lt;code&gt;Polly&lt;/code&gt; 会提供多样的 API，使其以 Retry, Retry Forever, Wait and Retry, Circuit Breaker 等方式进行处理。&lt;/p&gt;
+
+&lt;p&gt;以下是用 &lt;code&gt;Polly&lt;/code&gt; 实现的逻辑代码：
+当客户端程序访问远程服务失败时，过一段时间后试图再访问。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;await Policy
+ .Handle&amp;lt;TimeoutException&amp;gt;()
+ .Or&amp;lt;HttpException&amp;gt;(ex =&amp;gt; ex.WebEventCode == WebEventCodes.RuntimeErrorRequestAbort)
+ .WaitAndRetryAsync(new[] {1.Seconds(), 5.Seconds()})
+ .ExecuteAsync(() =&amp;gt; DoSomethingAsync());
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;net-消息:80656b7efe032c9381042fa60c037ce3&#34;&gt;.NET 消息&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://build.microsoft.com/&#34;&gt;Build 2016&lt;/a&gt; : 承载着许多令人震惊的消息的微软开发活动&lt;strong&gt;Build 2016&lt;/strong&gt;隆重收尾，&lt;a href=&#34;https://channel9.msdn.com/&#34;&gt;channel9&lt;/a&gt;中可以重新回顾所有Build 2016 的 session。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://blog.xamarin.com/xamarin-for-all&#34;&gt;Xamarin for Everyone&lt;/a&gt; : 微软收购 Xamarin 的一个月内，免费发布Xamarin 提供给所有人使用。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://techcrunch.com/2016/03/30/be-very-afraid-hell-has-frozen-over-bash-is-coming-to-windows-10/&#34;&gt;Microsoft is bringing the Bash shell to Windows 10&lt;/a&gt; : 微软表示将以window 10 update提供Bash Shell，Bash Shell是在 Linux和OS X中使用的，而 MS 目前为止使用的是自己的PowerShell。并且说明了可以以Native（而不是虚拟）使用 Ubuntu 的所有环境。(&lt;a href=&#34;http://fossbytes.com/microsoft-canonical-bring-ubuntu-linux-on-windows-10/&#34;&gt;Ubuntu Linux Is Coming To Windows 10&lt;/a&gt;).&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://blog.xamarin.com/cross-platform-messaging-for-ios-android-and-windows/&#34;&gt;Cross-Platform Messaging for iOS, Android, and Windows&lt;/a&gt; : Pierce Boggan 介绍了Xamarin及Window用的 Library，并在Xamarin开发者的博客上共享了可以通过这个实现SMS短信发送、打电话、发送邮件等功能的多平台(iOS, Android, and Windows) 信息插件的使用方法。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;asp-net-消息:80656b7efe032c9381042fa60c037ce3&#34;&gt;ASP.NET 消息&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.dotnetcurry.com/aspnet-mvc/1261/custom-model-binder-aspnet-mvc&#34;&gt;Custom Model Binder in ASP.NET MVC&lt;/a&gt; : Mahesh Sabni 介绍了Custom Model Binder如何根据 ASP.NET MVC model 的申请与数据匹配提供相应规律的实现方法。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.elanderson.net/2016/03/dependency-injection-conditional-registration-in-asp-net-core/&#34;&gt;Dependency Injection Conditional Registration in ASP.NET Core&lt;/a&gt; : Eric L. Anderson 介绍了在 ASP.NET Core 中 Dependency Injection的多种使用方式。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://rehansaeed.com/social-taghelpers-for-asp-net-core/&#34;&gt;Social TagHelpers for ASP.NET Core&lt;/a&gt; : Muhammad Rehan Saeed 共享了在 ASP.NET Core 中通过 Facebook, Twitter, Google+, Pintrest 等网站共享page时使用的meta tag相关内容。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>150330</title>

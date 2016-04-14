@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    150413 | Beijing Elandsystems Tech News
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="http://beijing-elandsystems.github.io/post/150413/"/>
+
+  
+  <link rel="stylesheet" href="/css/sanitize.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/highlight_monokai.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  
+  <link href="http://beijing-elandsystems.github.ioindex.xml" rel="alternate" type="application/rss+xml" title="Beijing Elandsystems Tech News" />
+  <link href="http://beijing-elandsystems.github.ioindex.xml" rel="feed" type="application/rss+xml" title="Beijing Elandsystems Tech News" />
+
+  
+  
+
+
+</head>
+
+
+
+<body>
+<div class="container">
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="http://beijing-elandsystems.github.io">Beijing Elandsystems Tech News</a></h1>
+        
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+  
+  <main id="single" role="main">
+    <div class="article-header">
+      <h1>150413</h1>
+      <div class="meta">
+        Apr 14, 2016 &nbsp;
+        
+      </div>
+    </div>
+    <article>
+      
+
+<h2 id="本周-packege:422fd56ba662109dd232da50cc9c0393">本周 packege</h2>
+
+<h3 id="imageprocessor:422fd56ba662109dd232da50cc9c0393">ImageProcessor</h3>
+
+<p>有些时候，在服务器上处理图片会更好，
+比如，图片中放置任意的watermark时、当场制作thumbnail时、
+或者需要将gallery上的图片做黑白处理显示。
+这样的话，服务器上就需要一个工具来动态处理图片了，
+由于是服务器上直接处理，当然速度要快，要是能有效地使用multi-core CPU则更好。</p>
+
+<p>这种情况可以使用James South做的ImageProcessor library。
+它是轻小的、快速的、简单的，且考虑到了multi-threading而有扩展性，
+而且还支持.NET Core。</p>
+
+<ul>
+<li><a href="http://imageprocessor.org/">ImageProcessor</a></li>
+<li><a href="http://imageprocessor.org/imageprocessor/imagefactory/">ImageProcessor Document</a></li>
+</ul>
+
+<p>以下代码是读取JPEG图片文件后，编辑为横向150 pixel、纵向根据大小调整比率并保存到memory stream的方法。</p>
+
+<pre><code>byte[] photoBytes = File.ReadAllBytes(file);
+ISupportedImageFormat format = new JpegFormat { Quality = 70 };
+Size size = new Size(150, 0)
+using (MemoryStream inStream = new MemoryStream(photoBytes))
+{
+    using (MemoryStream outStream = new MemoryStream())
+    {
+        using (ImageFactory imageFactory = new ImageFactory(preserveExifData:true))
+        {
+            imageFactory.Load(inStream)
+                        .Resize(size)
+                        .Format(format)
+                        .Save(outStream);
+        }
+    }
+}
+</code></pre>
+
+<h2 id="net-消息:422fd56ba662109dd232da50cc9c0393">.NET 消息</h2>
+
+<ul>
+<li><p><a href="https://www.simple-talk.com/dotnet/visual-studio/debugging-and-profiling-in-visual-studio-2015/">Debugging and Profiling in Visual Studio 2015</a> : Manuel Meyer 说明了提供于Visual Studio 2015的调试及prfiling功能。</p></li>
+
+<li><p><a href="http://gregorsuttie.com/2016/01/19/tips-for-deploying-your-net-project/">Tips for deploying your .NET project</a> : Gregor Suttie 共享了通过发布.NET项目经验获得的Tip。</p></li>
+
+<li><p>Immo Landwerth 共享了<a href="https://blogs.msdn.microsoft.com/dotnet/2016/02/10/porting-to-net-core/">将之前的 .NET 代码移植为 .NET Core 的方法</a>。</p></li>
+</ul>
+
+<h2 id="asp-net-消息:422fd56ba662109dd232da50cc9c0393">ASP.NET 消息</h2>
+
+<ul>
+<li><p><a href="http://dotnetliberty.com/index.php/2015/12/28/asp-net-5-scoped-dependencies/">ASP.NET 5 scoped dependencies</a> : Armen Shimoon对ASP.NET 5里默认内置的DI(Dependency Injection) 功能中的 Scoped 方式进行了详细说明。</p></li>
+
+<li><p><a href="https://www.twilio.com/blog/2015/12/hola-ip-messaging-real-time-translated-chat-with-asp-net-microsoft-translator-and-ip-messaging.html">Real time translated chat with ASP.NET, Microsoft Translator and IP Messaging</a> : Devin Rader 介绍了通过 <a href="http://www.microsoft.com/en-us/translator/translatorapi.aspx">Microsoft Translator API</a> 来实时翻译聊天信息的方法。</p></li>
+
+<li><p><a href="http://capesean.co.za/blog/asp-net-5-jwt-tokens/">Setting up ASP.NET v5 (vNext) to use JWT tokens (using OpenIddict)</a> : Capesean说明了在ASP.NET v5 中使用 JWT token 的方法。(参考：JWT token作为认证当事人之间公开的安全表现索赔方法的一种业界标准，目前RFC 7519中有详细说明。)</p></li>
+
+<li><p><a href="http://weblog.west-wind.com/posts/2016/Jan/25/FontAwesome-Fonts-and-Mime-Types-in-IIS-and-other-Web-Servers">FontAwesome fonts and MIME types in IIS and other web servers</a> : FontAwesome solution可以帮助其用text方式制作icon。 Rick Strahl 说明了在有IIS的各种 web 服务器中设置MIME type 的方法。</p></li>
+</ul>
+
+      
+      
+      
+    </article>
+    
+ <aside><div id="disqus_thread"></div></aside> 
+
+<script type="text/javascript">
+     
+    var disqus_shortname = 'tanksuzuki';
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  </main>
+  
+  <nav class="pagination-single">
+    
+      <span class="previous">&larr; <a href="http://beijing-elandsystems.github.io/post/150406/" rel="prev">150406</a></span>
+    
+    
+  </nav>
+
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      <img src="/images/profile.png" width="64" height="64"><br>
+      Beijing ELANDSYSTEMS Technology Development CO., LTD
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>
+

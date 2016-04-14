@@ -6,8 +6,131 @@
     <description>Recent content on Beijing Elandsystems Tech News</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Mar 2016 15:14:51 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 14 Apr 2016 09:51:06 +0800</lastBuildDate>
     <atom:link href="http://beijing-elandsystems.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>150413</title>
+      <link>http://beijing-elandsystems.github.io/post/150413/</link>
+      <pubDate>Thu, 14 Apr 2016 09:51:06 +0800</pubDate>
+      
+      <guid>http://beijing-elandsystems.github.io/post/150413/</guid>
+      <description>
+
+&lt;h2 id=&#34;本周-packege:422fd56ba662109dd232da50cc9c0393&#34;&gt;本周 packege&lt;/h2&gt;
+
+&lt;h3 id=&#34;imageprocessor:422fd56ba662109dd232da50cc9c0393&#34;&gt;ImageProcessor&lt;/h3&gt;
+
+&lt;p&gt;有些时候，在服务器上处理图片会更好，
+比如，图片中放置任意的watermark时、当场制作thumbnail时、
+或者需要将gallery上的图片做黑白处理显示。
+这样的话，服务器上就需要一个工具来动态处理图片了，
+由于是服务器上直接处理，当然速度要快，要是能有效地使用multi-core CPU则更好。&lt;/p&gt;
+
+&lt;p&gt;这种情况可以使用James South做的ImageProcessor library。
+它是轻小的、快速的、简单的，且考虑到了multi-threading而有扩展性，
+而且还支持.NET Core。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://imageprocessor.org/&#34;&gt;ImageProcessor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://imageprocessor.org/imageprocessor/imagefactory/&#34;&gt;ImageProcessor Document&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;以下代码是读取JPEG图片文件后，编辑为横向150 pixel、纵向根据大小调整比率并保存到memory stream的方法。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;byte[] photoBytes = File.ReadAllBytes(file);
+ISupportedImageFormat format = new JpegFormat { Quality = 70 };
+Size size = new Size(150, 0)
+using (MemoryStream inStream = new MemoryStream(photoBytes))
+{
+    using (MemoryStream outStream = new MemoryStream())
+    {
+        using (ImageFactory imageFactory = new ImageFactory(preserveExifData:true))
+        {
+            imageFactory.Load(inStream)
+                        .Resize(size)
+                        .Format(format)
+                        .Save(outStream);
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;net-消息:422fd56ba662109dd232da50cc9c0393&#34;&gt;.NET 消息&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.simple-talk.com/dotnet/visual-studio/debugging-and-profiling-in-visual-studio-2015/&#34;&gt;Debugging and Profiling in Visual Studio 2015&lt;/a&gt; : Manuel Meyer 说明了提供于Visual Studio 2015的调试及prfiling功能。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://gregorsuttie.com/2016/01/19/tips-for-deploying-your-net-project/&#34;&gt;Tips for deploying your .NET project&lt;/a&gt; : Gregor Suttie 共享了通过发布.NET项目经验获得的Tip。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Immo Landwerth 共享了&lt;a href=&#34;https://blogs.msdn.microsoft.com/dotnet/2016/02/10/porting-to-net-core/&#34;&gt;将之前的 .NET 代码移植为 .NET Core 的方法&lt;/a&gt;。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;asp-net-消息:422fd56ba662109dd232da50cc9c0393&#34;&gt;ASP.NET 消息&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://dotnetliberty.com/index.php/2015/12/28/asp-net-5-scoped-dependencies/&#34;&gt;ASP.NET 5 scoped dependencies&lt;/a&gt; : Armen Shimoon对ASP.NET 5里默认内置的DI(Dependency Injection) 功能中的 Scoped 方式进行了详细说明。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.twilio.com/blog/2015/12/hola-ip-messaging-real-time-translated-chat-with-asp-net-microsoft-translator-and-ip-messaging.html&#34;&gt;Real time translated chat with ASP.NET, Microsoft Translator and IP Messaging&lt;/a&gt; : Devin Rader 介绍了通过 &lt;a href=&#34;http://www.microsoft.com/en-us/translator/translatorapi.aspx&#34;&gt;Microsoft Translator API&lt;/a&gt; 来实时翻译聊天信息的方法。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://capesean.co.za/blog/asp-net-5-jwt-tokens/&#34;&gt;Setting up ASP.NET v5 (vNext) to use JWT tokens (using OpenIddict)&lt;/a&gt; : Capesean说明了在ASP.NET v5 中使用 JWT token 的方法。(参考：JWT token作为认证当事人之间公开的安全表现索赔方法的一种业界标准，目前RFC 7519中有详细说明。)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://weblog.west-wind.com/posts/2016/Jan/25/FontAwesome-Fonts-and-Mime-Types-in-IIS-and-other-Web-Servers&#34;&gt;FontAwesome fonts and MIME types in IIS and other web servers&lt;/a&gt; : FontAwesome solution可以帮助其用text方式制作icon。 Rick Strahl 说明了在有IIS的各种 web 服务器中设置MIME type 的方法。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>150406</title>
+      <link>http://beijing-elandsystems.github.io/post/150406/</link>
+      <pubDate>Wed, 06 Apr 2016 23:22:54 +0800</pubDate>
+      
+      <guid>http://beijing-elandsystems.github.io/post/150406/</guid>
+      <description>
+
+&lt;h2 id=&#34;本周-package:80656b7efe032c9381042fa60c037ce3&#34;&gt;本周 package&lt;/h2&gt;
+
+&lt;h3 id=&#34;polly:80656b7efe032c9381042fa60c037ce3&#34;&gt;Polly&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/App-vNext/Polly&#34;&gt;Polly&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;发生短暂 exception 时，&lt;code&gt;Polly&lt;/code&gt; 会提供多样的 API，使其以 Retry, Retry Forever, Wait and Retry, Circuit Breaker 等方式进行处理。&lt;/p&gt;
+
+&lt;p&gt;以下是用 &lt;code&gt;Polly&lt;/code&gt; 实现的逻辑代码：
+当客户端程序访问远程服务失败时，过一段时间后试图再访问。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;await Policy
+ .Handle&amp;lt;TimeoutException&amp;gt;()
+ .Or&amp;lt;HttpException&amp;gt;(ex =&amp;gt; ex.WebEventCode == WebEventCodes.RuntimeErrorRequestAbort)
+ .WaitAndRetryAsync(new[] {1.Seconds(), 5.Seconds()})
+ .ExecuteAsync(() =&amp;gt; DoSomethingAsync());
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;net-消息:80656b7efe032c9381042fa60c037ce3&#34;&gt;.NET 消息&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://build.microsoft.com/&#34;&gt;Build 2016&lt;/a&gt; : 承载着许多令人震惊的消息的微软开发活动&lt;strong&gt;Build 2016&lt;/strong&gt;隆重收尾，&lt;a href=&#34;https://channel9.msdn.com/&#34;&gt;channel9&lt;/a&gt;中可以重新回顾所有Build 2016 的 session。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://blog.xamarin.com/xamarin-for-all&#34;&gt;Xamarin for Everyone&lt;/a&gt; : 微软收购 Xamarin 的一个月内，免费发布Xamarin 提供给所有人使用。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://techcrunch.com/2016/03/30/be-very-afraid-hell-has-frozen-over-bash-is-coming-to-windows-10/&#34;&gt;Microsoft is bringing the Bash shell to Windows 10&lt;/a&gt; : 微软表示将以window 10 update提供Bash Shell，Bash Shell是在 Linux和OS X中使用的，而 MS 目前为止使用的是自己的PowerShell。并且说明了可以以Native（而不是虚拟）使用 Ubuntu 的所有环境。(&lt;a href=&#34;http://fossbytes.com/microsoft-canonical-bring-ubuntu-linux-on-windows-10/&#34;&gt;Ubuntu Linux Is Coming To Windows 10&lt;/a&gt;).&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://blog.xamarin.com/cross-platform-messaging-for-ios-android-and-windows/&#34;&gt;Cross-Platform Messaging for iOS, Android, and Windows&lt;/a&gt; : Pierce Boggan 介绍了Xamarin及Window用的 Library，并在Xamarin开发者的博客上共享了可以通过这个实现SMS短信发送、打电话、发送邮件等功能的多平台(iOS, Android, and Windows) 信息插件的使用方法。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;asp-net-消息:80656b7efe032c9381042fa60c037ce3&#34;&gt;ASP.NET 消息&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.dotnetcurry.com/aspnet-mvc/1261/custom-model-binder-aspnet-mvc&#34;&gt;Custom Model Binder in ASP.NET MVC&lt;/a&gt; : Mahesh Sabni 介绍了Custom Model Binder如何根据 ASP.NET MVC model 的申请与数据匹配提供相应规律的实现方法。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.elanderson.net/2016/03/dependency-injection-conditional-registration-in-asp-net-core/&#34;&gt;Dependency Injection Conditional Registration in ASP.NET Core&lt;/a&gt; : Eric L. Anderson 介绍了在 ASP.NET Core 中 Dependency Injection的多种使用方式。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://rehansaeed.com/social-taghelpers-for-asp-net-core/&#34;&gt;Social TagHelpers for ASP.NET Core&lt;/a&gt; : Muhammad Rehan Saeed 共享了在 ASP.NET Core 中通过 Facebook, Twitter, Google+, Pintrest 等网站共享page时使用的meta tag相关内容。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>150330</title>

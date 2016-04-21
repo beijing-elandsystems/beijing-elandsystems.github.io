@@ -6,8 +6,78 @@
     <description>Recent content in Posts on Beijing Elandsystems Tech News</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Apr 2016 09:51:06 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 20 Apr 2016 12:35:31 +0800</lastBuildDate>
     <atom:link href="http://beijing-elandsystems.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>150420</title>
+      <link>http://beijing-elandsystems.github.io/post/150420/</link>
+      <pubDate>Wed, 20 Apr 2016 12:35:31 +0800</pubDate>
+      
+      <guid>http://beijing-elandsystems.github.io/post/150420/</guid>
+      <description>
+
+&lt;h2 id=&#34;本周package:2fc31c61e7d916065615f81acb6cf1e3&#34;&gt;本周package&lt;/h2&gt;
+
+&lt;h2 id=&#34;reactiveui:2fc31c61e7d916065615f81acb6cf1e3&#34;&gt;ReactiveUI&lt;/h2&gt;
+
+&lt;p&gt;使用 ReactiveUI可以制作以 .NET 用 Reactive Extensions 为基础的看着方便、测试简单的接口。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://reactiveui.net/&#34;&gt;ReactiveUI&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;不仅支持像 WPF, WinForm, UWP App 一样在 Window 运营体系中可执行的多种 UI 形式，
+而且跟 Xamarin 也兼容，因此在 Xamarin.iOS, Xamarin.Android, Xamarin.Mac, Xamarin.Forms中也能使用。&lt;/p&gt;
+
+&lt;p&gt;举例说明：
+有时候用户在搜索窗输入值之后，即便不按 Enter 也需要往搜索服务传送 HTTP query，并自动显示结果。
+这种情况，比起用户每次输入文本时执行 query，还不如给1秒左右的空余时间，等判断输入结束后再传送。
+使用 ReactiveUI可以制作如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;WhenAnyValue(x =&amp;gt; x.SearchQuery)
+    .Throttle(TimeSpan.FromSeconds(1), RxApp.MainThreadScheduler)
+    .InvokeCommand(this, x =&amp;gt; x.Search);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;[ReactiveUI 网站](&lt;a href=&#34;http://reactiveui.net/&#34;&gt;http://reactiveui.net/&lt;/a&gt; 的第一页介绍部分有上述示例代码。&lt;/p&gt;
+
+&lt;h2 id=&#34;本周-control:2fc31c61e7d916065615f81acb6cf1e3&#34;&gt;本周 Control&lt;/h2&gt;
+
+&lt;p&gt;Telerik 的SideDrawer 是个只要传过去 Slide 就能显示菜单的 Mobile App 用的控件。
+该控件在UWP 和 Xamarin 环境中都能运行，因此在包含 Android, iOS, Windows 的所有手机平台上都能使用。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://msdnshared.blob.core.windows.net/media/2016/04/xamarin-sidedrawer.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;net-消息:2fc31c61e7d916065615f81acb6cf1e3&#34;&gt;.NET 消息&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://channel9.msdn.com/Blogs/Technology-and-Friends/tf420&#34;&gt;Nick Landry on .NET Framework and .NET Core (video)&lt;/a&gt; : Nick Landry 说明了 .NET Framework 和 .NET Core 的不同点和微软制作 .NET Core 的背景。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.telerik.com/blogs/survey-report-the-dotnet-developer-of-2016&#34;&gt;Survey Report: Who is the .NET Developer of 2016?&lt;/a&gt; : Nora Georgieva 共享了调查 .NET 开发者未来趋势的结果。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;asp-net-消息:2fc31c61e7d916065615f81acb6cf1e3&#34;&gt;ASP.NET 消息&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://developer.telerik.com/featured/new-configuration-model-asp-net-core/&#34;&gt;The New Configuration Model in ASP.NET Core&lt;/a&gt; : Julio Avellaneda 说明了 ASP.NET Core 中新适用的 Configuration Model。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://blog.mariusschulz.com/2016/03/31/inline-route-constraints-in-asp-net-core-mvc&#34;&gt;Inline Route Constraints in ASP.NET Core MVC&lt;/a&gt; : Marius Schulz 介绍 ASP.NET Core 和 Web API 2 里新添加的 Routing 功能。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.c-sharpcorner.com/article/understanding-the-role-of-startup-cs-file-in-Asp-Net-core/&#34;&gt;Understanding The Role of Startup.cs File In ASP.NET Core Project&lt;/a&gt; : Sunny Sharma 说明 Startup.cs 文件在 ASP.NET Core 项目中的作用。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.mikesdotnetting.com/article/295/encryption-and-decryption-in-asp-net-core&#34;&gt;Encryption and Decryption in ASP.NET Core&lt;/a&gt; : Mike Brind 说明在 ASP.NET Core 中加密、解密的方法。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;其他:2fc31c61e7d916065615f81acb6cf1e3&#34;&gt;其他&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://hashnode.com/post/best-front-end-frameworks-to-try-in-2016-cin1unmcn00tvrb535out1y08&#34;&gt;Best Front-end frameworks to try in 2016&lt;/a&gt;: 介绍 Front-end 中使用较多的框架。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://developer.washingtonpost.com/pb/blog/post/2016/04/06/embrace-go&#34;&gt;Embrace Go – A modern programming language&lt;/a&gt;: 整理 Go 语言的特征、语法的文。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>150413</title>

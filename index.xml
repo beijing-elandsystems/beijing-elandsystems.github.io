@@ -19,7 +19,7 @@
 
 &lt;h2 id=&#34;本周package:2fc31c61e7d916065615f81acb6cf1e3&#34;&gt;本周package&lt;/h2&gt;
 
-&lt;h2 id=&#34;reactiveui:2fc31c61e7d916065615f81acb6cf1e3&#34;&gt;ReactiveUI&lt;/h2&gt;
+&lt;h3 id=&#34;reactiveui:2fc31c61e7d916065615f81acb6cf1e3&#34;&gt;ReactiveUI&lt;/h3&gt;
 
 &lt;p&gt;使用 ReactiveUI可以制作以 .NET 用 Reactive Extensions 为基础的看着方便、测试简单的接口。&lt;/p&gt;
 
